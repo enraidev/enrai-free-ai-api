@@ -1,3 +1,12 @@
+---
+title: "Moving an Existing OpenAI Codebase to an OpenAI-Compatible Gateway"
+description: "How to migrate an existing OpenAI SDK codebase to an OpenAI-compatible gateway: base URL change, model aliases, streaming, retries and rollback plan."
+canonical: https://github.com/enraidev/enrai-free-ai-api/blob/main/articles/openai-sdk-migration.md
+lang: en
+date: 2026-11-17
+author: Enrai Dev
+---
+
 # Moving an Existing OpenAI Codebase to an OpenAI-Compatible Gateway
 
 *Last updated: 17 November 2026 · 5 min read*

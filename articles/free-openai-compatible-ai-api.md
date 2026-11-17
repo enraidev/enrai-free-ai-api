@@ -1,3 +1,12 @@
+---
+title: "Free OpenAI-Compatible AI APIs: What to Check Before You Commit"
+description: "A practical checklist for evaluating a free OpenAI-compatible AI API: model naming, rate limits, empty-response handling, failover and migration cost."
+canonical: https://github.com/enraidev/enrai-free-ai-api/blob/main/articles/free-openai-compatible-ai-api.md
+lang: en
+date: 2026-11-17
+author: Enrai Dev
+---
+
 # Free OpenAI-Compatible AI APIs: What to Check Before You Commit
 
 *Last updated: 17 November 2026 · 8 min read*
