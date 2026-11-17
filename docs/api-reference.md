@@ -1,5 +1,9 @@
 # API Reference: Endpoint, Autentikasi, dan Limit API AI Gratis Enrai
 
+**← Kembali ke [README](../README.md)** · [Getting started](getting-started.md) · [API reference](api-reference.md) · [Model](models.md) · [FAQ](faq.md)
+
+Terakhir diperbarui: **17 November 2026** · Dokumentasi resmi: <https://enrai.web.id/docs> · Harga & limit: <https://enrai.web.id/pricing>
+
 Referensi ringkas untuk **REST API** Enrai yang **kompatibel OpenAI**. Semua contoh memakai base URL produksi `https://enrai.web.id/v1`.
 
 Dokumentasi resmi dan terbaru: <https://enrai.web.id/docs> · Limit & harga: <https://enrai.web.id/pricing>

@@ -1,10 +1,14 @@
 # FAQ API AI Gratis Enrai: Pertanyaan yang Sering Ditanyakan
 
+**← Kembali ke [README](../README.md)** · [Getting started](getting-started.md) · [API reference](api-reference.md) · [Model](models.md) · [FAQ](faq.md)
+
+Terakhir diperbarui: **17 November 2026** · Dokumentasi resmi: <https://enrai.web.id/docs> · Harga & limit: <https://enrai.web.id/pricing>
+
 Jawaban singkat untuk pertanyaan paling umum tentang **API AI gratis** Enrai — layanan **LLM API** dengan endpoint **kompatibel OpenAI**. Semua jawaban mengacu ke situs resmi <https://enrai.web.id> per 17 November 2026.
 
 ## Apakah API AI Enrai benar-benar gratis?
 
-Ya. Selama masa **public beta**, Enrai menyediakan tier gratis dengan limit yang dipublikasikan, dan pendaftaran tidak meminta kartu kredit. Rincian harga ada di <https://enrai.web.id/pricing>. Paket berbayar dikelola dari panel admin bila Anda butuh kapasitas lebih.
+Ya. Selama masa **public beta**, Enrai menyediakan tier gratis dengan limit yang dipublikasikan, dan pendaftaran tidak meminta kartu kredit. Rincian harga ada di <https://enrai.web.id/pricing>.
 
 ## Apakah Enrai kompatibel dengan OpenAI SDK?
 
@@ -41,7 +45,7 @@ Bahasa apa pun yang punya HTTP client: Python, JavaScript/Node.js, PHP, Go, Rust
 
 ## Apakah ada dukungan vision atau function calling?
 
-Belum ada dokumentasi resminya di situs. Jangan merancang fitur yang bergantung pada kemampuan ini sebelum memastikan di <https://enrai.web.id/docs>. Status di [models.md](models.md) memakai placeholder `[ISI: ...]` sampai informasinya dipublikasikan.
+Belum ada dokumentasi resminya di situs. Jangan merancang fitur yang bergantung pada kemampuan ini sebelum memastikan di <https://enrai.web.id/docs>. Statusnya ditulis apa adanya di [models.md](models.md): belum dipublikasikan.
 
 ## Apakah aman untuk produksi?
 
@@ -53,11 +57,11 @@ API ini berstatus **public beta**. Cocok untuk prototipe, tools internal, dan ek
 
 ## Apakah ada halaman status layanan?
 
-[ISI: URL halaman status/uptime — belum tersedia di situs]. Status model terlihat di beranda bagian Models (<https://enrai.web.id/#model>).
+Belum dipublikasikan. Status model dan daftar yang sedang aktif terlihat di beranda bagian Models (<https://enrai.web.id/#model>) dan di `GET https://enrai.web.id/v1/models`.
 
 ## Ke mana harus melaporkan bug atau bertanya?
 
-[ISI: kanal komunitas — Telegram/Discord/email yang resmi]. Untuk masalah dokumentasi di repo ini, buka issue di repository GitHub; lihat [CONTRIBUTING.md](../CONTRIBUTING.md).
+Kanal komunitas resmi (grup chat) belum dipublikasikan. Untuk pertanyaan akun, key, atau kuota, gunakan kontak yang tercantum di <https://enrai.web.id>. Untuk masalah dokumentasi di repo ini, buka issue di GitHub; lihat [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ## Di mana dokumentasi lengkapnya?
 

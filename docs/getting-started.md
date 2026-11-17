@@ -1,5 +1,9 @@
 # Getting Started: Cara Daftar dan Memakai API AI Gratis Enrai
 
+**← Kembali ke [README](../README.md)** · [Getting started](getting-started.md) · [API reference](api-reference.md) · [Model](models.md) · [FAQ](faq.md)
+
+Terakhir diperbarui: **17 November 2026** · Dokumentasi resmi: <https://enrai.web.id/docs> · Harga & limit: <https://enrai.web.id/pricing>
+
 Panduan ini menuntun Anda dari nol sampai request pertama ke **API AI gratis** Enrai — daftar akun, mengambil API key, dan memanggil endpoint yang **kompatibel OpenAI**. Waktu tempuh sekitar dua menit.
 
 Dokumentasi resmi: <https://enrai.web.id/docs> · Daftar: <https://enrai.web.id/register> · Limit & harga: <https://enrai.web.id/pricing>

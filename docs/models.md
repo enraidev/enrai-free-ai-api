@@ -1,5 +1,9 @@
 # Daftar Model API AI Gratis Enrai (Chatgpt, Deepseek, GLM)
 
+**← Kembali ke [README](../README.md)** · [Getting started](getting-started.md) · [API reference](api-reference.md) · [Model](models.md) · [FAQ](faq.md)
+
+Terakhir diperbarui: **17 November 2026** · Dokumentasi resmi: <https://enrai.web.id/docs> · Harga & limit: <https://enrai.web.id/pricing>
+
 Halaman ini menjelaskan model apa saja yang bisa dipanggil lewat **API AI gratis** Enrai, bagaimana nama model bekerja, dan cara mengecek model yang sedang aktif sebelum aplikasi berjalan.
 
 Base URL: `https://enrai.web.id/v1` · Dokumentasi resmi: <https://enrai.web.id/docs> · Status model live: <https://enrai.web.id/#model>
@@ -44,10 +48,10 @@ Praktik yang disarankan:
 | Chat completion | Tersedia untuk ketiga model |
 | Streaming (SSE) | Tersedia |
 | Daftar model dinamis | Tersedia (`GET /v1/models`) |
-| Context window per model | [ISI: angka context window — tidak dipublikasikan di situs] |
-| Batas token output per model | [ISI: batas token output — tidak dipublikasikan di situs] |
-| Vision / image input | [ISI: belum ada dokumentasi resmi untuk fitur ini] |
-| Function calling / tools | [ISI: belum ada dokumentasi resmi untuk fitur ini] |
+| Context window per model | Belum dipublikasikan |
+| Batas token output per model | Belum dipublikasikan |
+| Vision / image input | Belum dipublikasikan |
+| Function calling / tools | Belum dipublikasikan |
 
 Jangan mengandalkan kemampuan yang belum tercantum di <https://enrai.web.id/docs>.
 
