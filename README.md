@@ -5,6 +5,8 @@ AI API for developers (public beta).
 
 Everything here is static: no build step, no dependencies, no tracking.
 
+**Live preview:** https://enraidev.github.io/enrai-promo/
+
 ```
 .
 ├── index.html                        # landing page (GitHub Pages ready)
