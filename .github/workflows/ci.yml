@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  markdownlint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: markdownlint-cli2
+        uses: DavidAnson/markdownlint-cli2-action@v25
+        with:
+          globs: "**/*.md"
+
+  links:
+    name: Link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # 401/403/429 diterima: endpoint /v1/* butuh API key dan beberapa host
+          # membatasi permintaan otomatis. Tautan mati (404/410) tetap gagal.
+          args: >-
+            --no-progress
+            --max-retries 3
+            --timeout 30
+            --accept 200,206,401,403,429
+            --exclude 'img\.shields\.io'
+            --exclude-path node_modules
+            './**/*.md'
+            './**/*.html'
+          fail: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  syntax:
+    name: Syntax & guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Python compile
+        run: python -m py_compile examples/python/*.py examples/openai-sdk/python/*.py scripts/generate_assets.py
+
+      - name: Node syntax check
+        run: |
+          node --check examples/nodejs/chat.mjs
+          node --check examples/openai-sdk/nodejs/chat.mjs
+
+      - name: Bash syntax check
+        run: |
+          for f in examples/curl/*.sh; do
+            bash -n "$f"
+            echo "ok: $f"
+          done
+
+      - name: Forbidden URL guard
+        run: |
+          # Pola dipisah agar file workflow ini tidak mencocokkan dirinya sendiri.
+          PAT="local""host|127\.0\.0\.1"
+          if grep -rniE "$PAT" . --exclude-dir=.git --exclude-dir=node_modules; then
+            echo "::error::Ditemukan alamat loopback (URL lokal) di repo"
+            exit 1
+          fi
+          echo "Bersih: tidak ada URL lokal"
