@@ -1,0 +1,16 @@
+{
+  "name": "enrai-free-ai-api-examples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Contoh pemakaian API AI gratis Enrai (kompatibel OpenAI) di Node.js, tanpa dependency.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "chat": "node chat.mjs",
+    "stream": "node chat.mjs --stream"
+  },
+  "homepage": "https://enrai.web.id",
+  "license": "MIT"
+}
