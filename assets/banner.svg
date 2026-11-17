@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Enrai — API AI gratis yang kompatibel OpenAI</title>
+  <desc id="desc">Banner gelap dengan tulisan Enrai, tagline "API AI gratis, kompatibel OpenAI", dan alamat enrai.web.id.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0d"/>
+      <stop offset="100%" stop-color="#141428"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.15" r="0.6">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="300" fill="url(#bg)"/>
+  <rect width="1200" height="300" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#accent)"/>
+
+  <!-- mark -->
+  <g transform="translate(72,96)">
+    <circle cx="34" cy="34" r="30" fill="none" stroke="url(#accent)" stroke-width="4"/>
+    <circle cx="34" cy="34" r="11" fill="#6366f1"/>
+  </g>
+
+  <text x="168" y="132" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#f4f4f7" letter-spacing="-1">Enrai</text>
+  <text x="170" y="176" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#a5b4fc">API AI gratis · kompatibel OpenAI · streaming SSE</text>
+  <text x="170" y="216" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#8b8ba7">Chatgpt · Deepseek · GLM — satu API key</text>
+
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" fill="#c7c7ff">
+    <rect x="812" y="120" width="316" height="60" rx="14" fill="#12121a" stroke="#2b2b45"/>
+    <text x="838" y="157" font-family="Consolas, Menlo, monospace" font-size="19" fill="#d6d6e7">https://enrai.web.id/v1</text>
+  </g>
+</svg>
