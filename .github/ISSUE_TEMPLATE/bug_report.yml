@@ -1,0 +1,76 @@
+name: "Laporan bug"
+description: "Laporkan kesalahan di dokumentasi atau contoh kode repo ini."
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Terima kasih sudah melapor. **Jangan menempelkan API key asli** di issue — sensor dulu.
+
+        Masalah akun, kuota, key, atau layanan `enrai.web.id` bukan lingkup repo ini; gunakan kontak resmi di <https://enrai.web.id>. Kerentanan keamanan: ikuti [SECURITY.md](https://github.com/enraidev/enrai-free-ai-api/blob/main/SECURITY.md).
+  - type: dropdown
+    id: area
+    attributes:
+      label: Bagian yang bermasalah
+      options:
+        - README
+        - docs/getting-started.md
+        - docs/api-reference.md
+        - docs/models.md
+        - docs/faq.md
+        - examples/python
+        - examples/nodejs
+        - examples/curl
+        - examples/openai-sdk
+        - CI / otomasi
+        - Lainnya
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Apa yang terjadi?
+      description: Jelaskan gejala yang Anda lihat, termasuk teks error apa adanya.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Apa yang Anda harapkan?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Langkah reproduksi
+      placeholder: |
+        1. Buka ...
+        2. Jalankan ...
+        3. Lihat error ...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Lingkungan
+      description: OS, versi Python/Node.js, dan bahasa contoh yang dipakai.
+      placeholder: "Windows 11, Python 3.12, openai 3.52.0"
+    validations:
+      required: false
+  - type: textarea
+    id: source
+    attributes:
+      label: Sumber fakta (untuk kesalahan dokumentasi)
+      description: Tautan ke halaman <https://enrai.web.id> yang menunjukkan perilaku sebenarnya.
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Konfirmasi
+      options:
+        - label: Saya tidak menempelkan API key atau data pribadi di laporan ini.
+          required: true
+        - label: Saya sudah mencari issue serupa sebelum membuka yang baru.
+          required: true

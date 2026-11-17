@@ -1,0 +1,38 @@
+name: "Usulan fitur"
+description: "Usulkan contoh kode, bagian dokumentasi, atau perbaikan pengalaman developer."
+title: "[fitur] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Usulan yang paling cepat diterima: contoh kode bahasa baru, atau bagian dokumentasi yang jelas tujuannya.
+
+        Fitur **layanan** (model baru, kuota, endpoint baru) dikelola di `enrai.web.id`, bukan di repo ini — sampaikan lewat kontak resmi atau Diskusi kategori Ideas.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Masalah yang ingin diselesaikan
+      description: Situasi apa yang membuat Anda butuh ini?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Usulan solusi
+      description: Mis. "contoh PHP dengan cURL" atau "bagian troubleshooting timeout".
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatif yang sudah dipertimbangkan
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Lingkup
+      options:
+        - label: Usulan ini bisa diselesaikan hanya dengan mengubah repo ini (dokumentasi/contoh).
+          required: true

@@ -1,0 +1,41 @@
+name: "Perbaikan dokumentasi"
+description: "Ada dokumentasi yang salah, tidak jelas, atau tertinggal dari situs."
+title: "[docs] "
+labels: ["documentation"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: File dan bagian
+      placeholder: "docs/api-reference.md → bagian Rate limit"
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Isi saat ini
+      description: Kutip kalimat atau tabel yang bermasalah.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Seharusnya
+      description: Tulis usulan perbaikan. Sertakan tautan sumber di situs untuk setiap angka atau klaim.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Sumber
+      description: Halaman <https://enrai.web.id> yang menjadi acuan.
+      placeholder: "https://enrai.web.id/pricing"
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Konfirmasi
+      options:
+        - label: Klaim di usulan ini bisa saya tunjukkan sumbernya di situs resmi.
+          required: true
