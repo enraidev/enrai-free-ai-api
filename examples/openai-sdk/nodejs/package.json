@@ -1,0 +1,19 @@
+{
+  "name": "enrai-openai-sdk-examples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Contoh pemakaian API AI gratis Enrai dengan SDK resmi openai (Node.js).",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "chat": "node chat.mjs",
+    "stream": "node chat.mjs --stream"
+  },
+  "dependencies": {
+    "openai": "^7.57.0"
+  },
+  "homepage": "https://enrai.web.id",
+  "license": "MIT"
+}

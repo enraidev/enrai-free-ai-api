@@ -14,9 +14,10 @@ Daftar akun gratis: <https://enrai.web.id/register> · Dokumentasi: <https://enr
 
 | Folder | Isi |
 |---|---|
-| [`python/`](python) | `chat.py` (chat completion), `stream.py` (streaming SSE), `requirements.txt` |
-| [`nodejs/`](nodejs) | `chat.mjs` (chat + streaming), `package.json` |
-| [`curl/`](curl) | `models.sh`, `chat.sh`, `stream.sh` |
+| [`python/`](python/chat.py) | `chat.py` (chat completion), `stream.py` (streaming SSE), `requirements.txt` |
+| [`nodejs/`](nodejs/chat.mjs) | `chat.mjs` (chat + streaming, tanpa dependency), `package.json` |
+| [`curl/`](curl/chat.sh) | `models.sh`, `chat.sh`, `stream.sh` |
+| [`openai-sdk/`](openai-sdk/README.md) | Contoh paket resmi `openai` untuk Python dan Node.js |
 
 Model default di semua contoh: `Chatgpt`. Ganti dengan `Deepseek` atau `GLM` (lihat [../docs/models.md](../docs/models.md)).
 
