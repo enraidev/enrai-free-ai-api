@@ -20,7 +20,7 @@
 
 **Enrai** adalah **API AI gratis** yang menyediakan **LLM API** lewat REST API **kompatibel OpenAI**: satu API key untuk beberapa model, endpoint `/v1/chat/completions` dan `/v1/models`, plus streaming SSE. Karena formatnya sama dengan OpenAI, **alternatif ChatGPT** di sisi SDK ini bisa dipakai tanpa menulis ulang kode — cukup ganti base URL.
 
-Dokumentasi ini ditulis untuk developer yang ingin mengirim request pertama dalam dua menit, lalu tahu persis apa yang terjadi saat gagal: kode error, batas laju, dan cara menanganinya.
+Dokumentasi ini ditulis untuk developer yang ingin mengirim request pertama dalam tiga langkah, lalu tahu persis apa yang terjadi saat gagal: kode error, batas laju, dan cara menanganinya.
 
 ---
 

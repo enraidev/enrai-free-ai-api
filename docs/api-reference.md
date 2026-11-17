@@ -86,7 +86,7 @@ Aturan yang perlu dipegang di sisi klien:
 
 1. Setiap potongan datang sebagai baris `data: {...}` dengan delta di `choices[].delta`.
 2. Stream diakhiri dengan `data: [DONE]` — jangan menunggu JSON body tambahan.
-3. Baris komentar/heartbeat adalah bagian sah dari SSE; abaikan baris yang tidak diawali `data:`.
+3. Baris yang tidak diawali `data:` adalah komentar SSE; abaikan, jangan di-parse sebagai JSON.
 
 Contoh klien: [`../examples/python/stream.py`](../examples/python/stream.py), [`../examples/curl/stream.sh`](../examples/curl/stream.sh).
 
