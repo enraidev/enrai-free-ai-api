@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enrai Dev — Free OpenAI-Compatible AI API for Developers</title>
+<meta name="description" content="A free AI API compatible with the OpenAI SDK. One key, many models, streaming support, no credit card. Sign up and make your first request in under two minutes.">
+<meta name="keywords" content="free ai api, openai compatible api, free llm api, free ai api key, openai sdk alternative, chat completions api">
+<link rel="canonical" href="https://enrai.web.id/">
+<meta name="theme-color" content="#4f46e5">
+<meta name="robots" content="index, follow">
+
+<meta property="og:site_name" content="Enrai Dev">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Enrai Dev — Free OpenAI-Compatible AI API for Developers">
+<meta property="og:description" content="One API key, many models, OpenAI SDK compatible, streaming, no credit card. Free during public beta.">
+<meta property="og:url" content="https://enrai.web.id/">
+<meta property="og:image" content="https://enrai.web.id/uploads/site/brand/CILABIgmyBwRJS1oNqIeWDP9GlebrCnEndrUOQGg.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Enrai Dev — Free OpenAI-Compatible AI API">
+<meta name="twitter:description" content="One API key, many models, streaming, no credit card. Free during public beta.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Enrai Dev",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "url": "https://enrai.web.id/",
+  "description": "A free AI API compatible with the OpenAI SDK. One API key for every available model, with streaming and automatic provider failover.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "OpenAI-compatible /v1/chat/completions endpoint",
+    "GET /v1/models model discovery",
+    "Server-Sent Events streaming",
+    "One API key for every available model",
+    "No credit card required"
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#0a0a0d; --panel:#12121a; --panel-2:#171722; --stroke:#26263a;
+    --fg:#f4f4f7; --muted:#a1a1b3; --accent:#6366f1; --accent-soft:#4f46e5;
+    --ok:#34d399; --warn:#fbbf24;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+    line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:var(--fg);text-decoration:none}
+  a:hover{color:#c7c7ff}
+  h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:20;background:rgba(10,10,13,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--stroke)}
+  .nav{display:flex;align-items:center;gap:24px;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)}
+  .nav nav{display:flex;gap:22px;margin-left:auto;font-size:14px;color:var(--muted)}
+  .nav nav a:hover{color:var(--fg)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;
+    background:var(--accent-soft);color:#fff;border:1px solid transparent;
+    transition:transform .12s ease, background .12s ease;
+  }
+  .btn:hover{background:#4338ca;color:#fff;transform:translateY(-1px)}
+  .btn.ghost{background:transparent;border-color:var(--stroke);color:var(--fg)}
+  .btn.ghost:hover{background:var(--panel-2);border-color:#3a3a52}
+
+  /* hero */
+  .hero{padding:72px 0 40px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);border:1px solid var(--stroke);
+    padding:5px 12px;border-radius:999px;margin-bottom:22px
+  }
+  .pill i{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block}
+  h1{font-size:clamp(32px,4.6vw,54px);font-weight:800}
+  h1 em{font-style:normal;color:#a5b4fc}
+  .lead{color:var(--muted);font-size:17px;max-width:46ch;margin:18px 0 26px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  .checks{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;font-size:13px;color:var(--muted)}
+  .checks span::before{content:"✓";color:var(--ok);margin-right:7px;font-weight:700}
+
+  /* code card */
+  .card{background:var(--panel);border:1px solid var(--stroke);border-radius:16px;overflow:hidden}
+  .tabs{display:flex;gap:4px;padding:10px 10px 0;border-bottom:1px solid var(--stroke);background:var(--panel-2)}
+  .tab{
+    appearance:none;background:transparent;border:0;color:var(--muted);font-family:var(--mono);
+    font-size:12.5px;padding:8px 12px;border-radius:8px 8px 0 0;cursor:pointer
+  }
+  .tab[aria-selected="true"]{color:var(--fg);background:var(--panel);box-shadow:inset 0 -2px 0 var(--accent)}
+  pre{margin:0;padding:18px;overflow:auto;font-family:var(--mono);font-size:12.8px;line-height:1.7;color:#d6d6e7}
+  pre .k{color:#a5b4fc}
+  pre .s{color:#86efac}
+  pre .c{color:#6b6b85}
+  [role="tabpanel"]{display:none}
+  [role="tabpanel"].on{display:block}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:26px 0 8px}
+  .stat{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:18px}
+  .stat b{display:block;font-size:22px;letter-spacing:-.02em}
+  .stat span{font-size:12.5px;color:var(--muted)}
+
+  section{padding:64px 0;border-top:1px solid var(--stroke)}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8b8ba7;margin-bottom:12px}
+  h2{font-size:clamp(24px,3vw,34px);font-weight:750}
+  .sub{color:var(--muted);margin:12px 0 34px;max-width:60ch}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .feat{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:22px}
+  .feat h3{font-size:15.5px;margin-bottom:8px}
+  .feat p{margin:0;font-size:14px;color:var(--muted)}
+  .feat .ico{font-size:18px;margin-bottom:12px;color:#a5b4fc}
+
+  table{width:100%;border-collapse:collapse;font-size:14px;background:var(--panel);border:1px solid var(--stroke);border-radius:14px;overflow:hidden}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--stroke)}
+  th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#8b8ba7;background:var(--panel-2)}
+  tr:last-child td{border-bottom:0}
+  code.inline{font-family:var(--mono);font-size:12.5px;background:var(--panel-2);border:1px solid var(--stroke);padding:2px 6px;border-radius:6px;color:#c7c7ff}
+  .ok{color:var(--ok);font-weight:600}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+  .step{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:22px;position:relative}
+  .step::before{
+    counter-increment:s;content:counter(s);position:absolute;top:-13px;left:20px;
+    width:26px;height:26px;border-radius:8px;background:var(--accent-soft);color:#fff;
+    display:grid;place-items:center;font-size:13px;font-weight:700
+  }
+  .step h3{font-size:15px;margin:10px 0 6px}
+  .step p{margin:0;font-size:14px;color:var(--muted)}
+
+  details{border:1px solid var(--stroke);border-radius:12px;padding:16px 18px;background:var(--panel);margin-bottom:10px}
+  summary{cursor:pointer;font-weight:600;font-size:15px}
+  details p{margin:12px 0 0;color:var(--muted);font-size:14.5px}
+
+  .banner{
+    background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(99,102,241,.04));
+    border:1px solid #35356b;border-radius:18px;padding:40px;
+    display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap
+  }
+  .banner h2{font-size:clamp(22px,2.6vw,30px)}
+  .banner p{color:var(--muted);margin:10px 0 0;max-width:52ch}
+
+  footer{border-top:1px solid var(--stroke);padding:36px 0;color:var(--muted);font-size:13.5px}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  .foot nav{display:flex;gap:18px;flex-wrap:wrap}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;padding-top:48px;gap:32px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .grid,.steps{grid-template-columns:1fr}
+    .nav nav{display:none}
+    .banner{padding:28px}
+  }
+</style>
+</head>
+<body id="main">
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#main"><span class="dot"></span>Enrai Dev</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#models">Models</a>
+      <a href="#quickstart">Quickstart</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://enrai.web.id/docs">Docs</a>
+    </nav>
+    <a class="btn" href="https://enrai.web.id/register">Get free API key</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <span class="pill"><i></i>Public beta · free tier</span>
+        <h1>A free AI API that speaks <em>OpenAI</em>.</h1>
+        <p class="lead">
+          One API key, many models, one base URL. Point your existing OpenAI SDK at
+          <code class="inline">https://enrai.web.id/v1</code> and keep your code exactly as it is.
+        </p>
+        <div class="cta">
+          <a class="btn" href="https://enrai.web.id/register">Sign up free →</a>
+          <a class="btn ghost" href="https://enrai.web.id/docs">Read the docs</a>
+        </div>
+        <div class="checks">
+          <span>No credit card</span>
+          <span>Setup in ~2 minutes</span>
+          <span>Streaming supported</span>
+          <span>OpenAI SDK compatible</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true"  aria-controls="p-curl"   data-p="p-curl">curl</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="p-node"   data-p="p-node">node</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="p-python" data-p="p-python">python</button>
+        </div>
+        <div id="p-curl" role="tabpanel" class="on"><pre><span class="c"># first request</span>
+curl https://enrai.web.id/v1/chat/completions \
+  -H <span class="s">"Authorization: Bearer $ENRAI_API_KEY"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{
+    "model": "Chatgpt",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'</span></pre></div>
+        <div id="p-node" role="tabpanel"><pre><span class="c">// npm install openai</span>
+<span class="k">import</span> OpenAI <span class="k">from</span> <span class="s">"openai"</span>;
+
+<span class="k">const</span> client = <span class="k">new</span> OpenAI({
+  baseURL: <span class="s">"https://enrai.web.id/v1"</span>,
+  apiKey: process.env.ENRAI_API_KEY,
+});
+
+<span class="k">const</span> res = <span class="k">await</span> client.chat.completions.create({
+  model: <span class="s">"Chatgpt"</span>,
+  messages: [{ role: <span class="s">"user"</span>, content: <span class="s">"Hello!"</span> }],
+});
+console.log(res.choices[0].message.content);</pre></div>
+        <div id="p-python" role="tabpanel"><pre><span class="c"># pip install openai</span>
+<span class="k">from</span> openai <span class="k">import</span> OpenAI
+
+client = OpenAI(
+    base_url=<span class="s">"https://enrai.web.id/v1"</span>,
+    api_key=<span class="s">"sk-enrai-..."</span>,
+)
+res = client.chat.completions.create(
+    model=<span class="s">"Chatgpt"</span>,
+    messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: <span class="s">"Hello!"</span>}],
+)
+<span class="k">print</span>(res.choices[0].message.content)</pre></div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>3+</b><span>Ready-to-use models</span></div>
+      <div class="stat"><b>20/min</b><span>Chat request limit per key</span></div>
+      <div class="stat"><b>1</b><span>Key for every model</span></div>
+      <div class="stat"><b>$0</b><span>Cost to get started</span></div>
+    </div>
+  </div>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="eyebrow">Why Enrai</div>
+      <h2>Built for people who ship prototypes.</h2>
+      <p class="sub">A thin, compatible layer in front of several model providers. You keep your SDK, your prompts and your code — Enrai handles the routing.</p>
+      <div class="grid">
+        <div class="feat">
+          <div class="ico">⌁</div>
+          <h3>OpenAI-compatible endpoints</h3>
+          <p><code class="inline">POST /v1/chat/completions</code> and <code class="inline">GET /v1/models</code> follow the OpenAI shape, so existing SDKs and tools work by changing the base URL.</p>
+        </div>
+        <div class="feat">
+          <div class="ico">⇉</div>
+          <h3>Automatic provider failover</h3>
+          <p>Each model name is a combo managed server-side. If one upstream provider fails, the request moves to another member of the combo instead of returning an empty answer.</p>
+        </div>
+        <div class="feat">
+          <div class="ico">≡</div>
+          <h3>Streaming that behaves</h3>
+          <p>Send <code class="inline">"stream": true</code> and read Server-Sent Events. A heartbeat keeps long generations from going silent behind proxies.</p>
+        </div>
+        <div class="feat">
+          <div class="ico">◎</div>
+          <h3>One key, many models</h3>
+          <p>No per-provider accounts. One key from the dashboard unlocks every available model, and <code class="inline">/v1/models</code> lists what is live right now.</p>
+        </div>
+        <div class="feat">
+          <div class="ico">⏱</div>
+          <h3>Honest, published limits</h3>
+          <p>20 chat requests per minute (burst 5) and 60 model-list requests per minute, per key. The limits are documented up front instead of appearing as mystery 429s.</p>
+        </div>
+        <div class="feat">
+          <div class="ico">⌘</div>
+          <h3>Works with your stack</h3>
+          <p>curl, Node, Python, PHP, or any client that speaks the OpenAI format — including editors and agent tools that let you set a custom API base.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="models">
+    <div class="wrap">
+      <div class="eyebrow">Models</div>
+      <h2>Published names, live status.</h2>
+      <p class="sub">Model names are stable aliases. The providers behind each combo are rotated automatically, so the same request keeps working when an upstream has an outage.</p>
+      <table>
+        <thead><tr><th>Model</th><th>Capability</th><th>Streaming</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">Chatgpt</code></td><td>Chat completion</td><td>Yes</td><td class="ok">Online</td></tr>
+          <tr><td><code class="inline">Deepseek</code></td><td>Chat completion</td><td>Yes</td><td class="ok">Online</td></tr>
+          <tr><td><code class="inline">GLM</code></td><td>Chat completion</td><td>Yes</td><td class="ok">Online</td></tr>
+        </tbody>
+      </table>
+      <p class="sub" style="margin:18px 0 0">Always read <code class="inline">GET https://enrai.web.id/v1/models</code> at startup and cache the list — do not poll it on every request.</p>
+    </div>
+  </section>
+
+  <section id="quickstart">
+    <div class="wrap">
+      <div class="eyebrow">Quickstart</div>
+      <h2>Two minutes from zero to a token.</h2>
+      <p class="sub">No build step, no billing form, no waiting list.</p>
+      <div class="steps">
+        <div class="step"><h3>Create an account</h3><p><a href="https://enrai.web.id/register">Register</a> with an email address. No card required.</p></div>
+        <div class="step"><h3>Generate a key</h3><p>Open Dashboard → API Keys. The key is shown once — store it in an environment variable.</p></div>
+        <div class="step"><h3>Call the endpoint</h3><p>Send your first <code class="inline">/v1/chat/completions</code> request with any OpenAI SDK.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions people actually ask.</h2>
+      <p class="sub"></p>
+      <details><summary>Is it really free?</summary><p>Yes. During public beta the API has a free tier with no credit card: one key, every available model, the published rate limits. Paid plans are managed from the admin panel when you need more.</p></details>
+      <details><summary>Do I have to rewrite my app?</summary><p>No. If you already use the OpenAI SDK or an OpenAI-compatible client, change the base URL to <code class="inline">https://enrai.web.id/v1</code> and the key. Requests, payloads and response shapes stay the same.</p></details>
+      <details><summary>What happens when a provider goes down?</summary><p>Each model name is a combo of upstream providers. A request that fails is retried against another member of the combo. If every attempt comes back empty, you get a 502 with an error message instead of a blank answer.</p></details>
+      <details><summary>Do you support streaming?</summary><p>Yes — <code class="inline">"stream": true</code> returns Server-Sent Events in the standard OpenAI chunk format, terminated with <code class="inline">[DONE]</code>.</p></details>
+      <details><summary>What about my data?</summary><p>Prompts are forwarded to the upstream provider that serves the request; see the <a href="https://enrai.web.id/privacy-policy">privacy policy</a> and <a href="https://enrai.web.id/terms-and-conditions">terms</a> for details. Do not send secrets you would not send to a third-party API.</p></details>
+      <details><summary>Is it production-ready?</summary><p>It is a public beta. Use it for prototypes, side projects, internal tools and evaluation — and keep a second provider configured for anything that must never fail.</p></details>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="banner">
+        <div>
+          <h2>Grab a key and make one call.</h2>
+          <p>Free during public beta. If the first request returns text, you have already done the hard part.</p>
+        </div>
+        <a class="btn" href="https://enrai.web.id/register">Start building →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 Enrai Dev · Public beta</div>
+    <nav>
+      <a href="https://enrai.web.id/docs">Docs</a>
+      <a href="https://enrai.web.id/pricing">Pricing</a>
+      <a href="https://enrai.web.id/blog">Blog</a>
+      <a href="https://enrai.web.id/privacy-policy">Privacy</a>
+      <a href="https://enrai.web.id/terms-and-conditions">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach(function (t) {
+        t.setAttribute('aria-selected', String(t === tab));
+        document.getElementById(t.dataset.p).classList.toggle('on', t === tab);
+      });
+    });
+  });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is Enrai Dev really free?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. During public beta the API has a free tier with no credit card: one key, every available model, and published rate limits of 20 chat requests and 60 model-list requests per minute."}},
+    {"@type": "Question", "name": "Do I have to rewrite my app to use Enrai?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Change the base URL to https://enrai.web.id/v1 and the API key; requests and response shapes stay OpenAI-compatible."}},
+    {"@type": "Question", "name": "What happens when an upstream provider goes down?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Each model name is a combo of providers. A failed request is retried against another member of the combo, and if all attempts come back empty the API returns a 502 error instead of an empty answer."}},
+    {"@type": "Question", "name": "Does Enrai support streaming?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. Send \"stream\": true and read Server-Sent Events in the OpenAI chunk format, terminated with [DONE]."}}
+  ]
+}
+</script>
+</body>
+</html>
