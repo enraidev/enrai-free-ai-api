@@ -338,7 +338,7 @@ Koreksi dokumentasi, contoh kode baru, atau laporan bug sangat diterima. Baca [`
 ## Lisensi
 
 - **Kode contoh** (`examples/`): [MIT](LICENSE)
-- **Dokumentasi & artikel** (`README.md`, `docs/`, `articles/`, `index.html`): [CC BY 4.0](LICENSE)
+- **Dokumentasi & artikel** (`README.md`, `docs/`, `articles/`, `index.html`): [CC BY 4.0](LICENSE-DOCS.md)
 
 ---
 
