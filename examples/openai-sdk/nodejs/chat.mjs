@@ -1,44 +1,44 @@
 #!/usr/bin/env node
 /**
- * Chat completion dengan SDK resmi `openai` untuk API AI gratis Enrai.
+ * Chat completion with the official `openai` SDK against the free Enrai AI API.
  *
- * Pemakaian:
+ * Usage:
  *   export ENRAI_API_KEY="YOUR_API_KEY"
  *   npm install
- *   node chat.mjs "Halo, apa kabar?"
- *   node chat.mjs --stream "Hitung 1 sampai 10."
+ *   node chat.mjs "Hello, how are you?"
+ *   node chat.mjs --stream "Count from 1 to 10."
  *
- * Variabel lingkungan:
- *   ENRAI_API_KEY  wajib, API key dari https://enrai.web.id/register
- *   ENRAI_MODEL    opsional, default Chatgpt (Deepseek, GLM)
+ * Environment variables:
+ *   ENRAI_API_KEY  required, API key from https://enrai.web.id/register
+ *   ENRAI_MODEL    optional, defaults to Chatgpt (Deepseek, GLM)
  *
- * Dokumentasi: https://enrai.web.id/docs
+ * Documentation: https://enrai.web.id/docs
  */
 
 import OpenAI from "openai";
 
 const BASE_URL = "https://enrai.web.id/v1";
 const DEFAULT_MODEL = "Chatgpt";
-const DEFAULT_PROMPT = "Halo! Apa itu API yang kompatibel OpenAI?";
+const DEFAULT_PROMPT = "Hello! What is an OpenAI-compatible API?";
 
 const ERROR_HINTS = {
-  401: "API key tidak valid atau hilang. Periksa ENRAI_API_KEY.",
-  429: "Rate limit tercapai (20 request/menit, burst 5). Tunggu lalu ulangi.",
-  500: "Galat server. Ulangi setelah jeda; laporkan bila terus berulang.",
-  502: "Seluruh provider di balik combo sedang gagal. Ulangi beberapa saat lagi.",
+  401: "Invalid or missing API key. Check ENRAI_API_KEY.",
+  429: "Rate limit reached (20 requests/minute, burst 5). Wait and retry.",
+  500: "Server error. Retry after a pause; report it if it keeps happening.",
+  502: "Every provider behind the combo is failing. Retry in a moment.",
 };
 
 function explain(error) {
   const status = error?.status;
   if (Number.isInteger(status) && ERROR_HINTS[status]) return `[${status}] ${ERROR_HINTS[status]}`;
-  if (Number.isInteger(status)) return `[${status}] Permintaan gagal: ${error.message}`;
-  return `Permintaan gagal: ${error?.message ?? error}`;
+  if (Number.isInteger(status)) return `[${status}] Request failed: ${error.message}`;
+  return `Request failed: ${error?.message ?? error}`;
 }
 
 const apiKey = process.env.ENRAI_API_KEY;
 if (!apiKey) {
-  console.error("ENRAI_API_KEY belum di-set. Jalankan: export ENRAI_API_KEY='YOUR_API_KEY'");
-  console.error("Belum punya key? Daftar gratis di https://enrai.web.id/register");
+  console.error("ENRAI_API_KEY is not set. Run: export ENRAI_API_KEY='YOUR_API_KEY'");
+  console.error("No key yet? Sign up free at https://enrai.web.id/register");
   process.exit(2);
 }
 
@@ -68,7 +68,7 @@ if (useStream) {
 
   process.stdout.write("\n");
   if (!gotText) {
-    console.error("Stream selesai tanpa teks \u2014 perlakukan sebagai kegagalan.");
+    console.error("Stream finished without text \u2014 treat it as a failure.");
     process.exit(1);
   }
   process.exit(0);
@@ -84,8 +84,8 @@ try {
 
 const content = (response?.choices?.[0]?.message?.content ?? "").trim();
 if (!content) {
-  // 200 dengan isi kosong tetap dianggap gagal.
-  console.error("Jawaban kosong dari upstream \u2014 perlakukan sebagai kegagalan.");
+  // A 200 with an empty body is still a failure.
+  console.error("Empty answer from upstream \u2014 treat it as a failure.");
   process.exit(1);
 }
 

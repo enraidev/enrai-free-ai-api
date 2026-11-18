@@ -1,12 +1,17 @@
-# API Reference: Endpoint, Autentikasi, dan Limit API AI Gratis Enrai
+# API Reference: Endpoints, Authentication and Limits of the Free Enrai AI API
 
-**← Kembali ke [README](../README.md)** · [Getting started](getting-started.md) · [API reference](api-reference.md) · [Model](models.md) · [FAQ](faq.md)
+**← Back to [README](../README.md)** · [Getting started](getting-started.md) ·
+[API reference](api-reference.md) · [Models](models.md) · [FAQ](faq.md) ·
+[Bahasa Indonesia](id/api-reference.md)
 
-Terakhir diperbarui: **17 November 2026** · Dokumentasi resmi: <https://enrai.web.id/docs> · Harga & limit: <https://enrai.web.id/pricing>
+Last updated: **17 November 2026** · Official documentation: <https://enrai.web.id/docs> ·
+Pricing & limits: <https://enrai.web.id/pricing>
 
-Referensi ringkas untuk **REST API** Enrai yang **kompatibel OpenAI**. Semua contoh memakai base URL produksi `https://enrai.web.id/v1`.
+A compact reference for the **OpenAI-compatible** Enrai **REST API**. Every example uses the
+production base URL `https://enrai.web.id/v1`.
 
-Dokumentasi resmi dan terbaru: <https://enrai.web.id/docs> · Limit & harga: <https://enrai.web.id/pricing>
+Official, always-current documentation: <https://enrai.web.id/docs> · Limits & pricing:
+<https://enrai.web.id/pricing>
 
 ## Base URL
 
@@ -14,27 +19,28 @@ Dokumentasi resmi dan terbaru: <https://enrai.web.id/docs> · Limit & harga: <ht
 https://enrai.web.id/v1
 ```
 
-## Autentikasi
+## Authentication
 
-Setiap request wajib menyertakan header berikut:
+Every request must send these headers:
 
 ```
-Authorization: Bearer YOUR_API_KEY
+Authorization: Bearer <key>
 Content-Type: application/json
 ```
 
-API key dibuat di **Dashboard → API Keys** dan hanya ditampilkan **sekali** saat dibuat. Simpan di environment variable; jangan pernah menaruhnya di kode, repo, atau issue publik.
+API keys are created in **Dashboard → API Keys** and are shown **once** at creation. Keep the key
+in an environment variable; never put it in code, a repository or a public issue.
 
-| Status | Arti |
+| Status | Meaning |
 |---|---|
-| `401` | Key tidak ada atau tidak valid |
+| `401` | Key missing or invalid |
 
-## Endpoint
+## Endpoints
 
-| Method | Path | Deskripsi |
+| Method | Path | Description |
 |---|---|---|
-| `POST` | `/v1/chat/completions` | Membuat chat completion (format OpenAI) |
-| `GET` | `/v1/models` | Menampilkan model combo yang sedang aktif |
+| `POST` | `/v1/chat/completions` | Create a chat completion (OpenAI format) |
+| `GET` | `/v1/models` | List the combo models that are currently live |
 
 ### POST /v1/chat/completions
 
@@ -45,21 +51,22 @@ curl https://enrai.web.id/v1/chat/completions \
   -d '{
     "model": "Chatgpt",
     "messages": [
-      { "role": "system", "content": "Anda asisten yang ringkas." },
-      { "role": "user", "content": "Apa itu API yang kompatibel OpenAI?" }
+      { "role": "system", "content": "You are a concise assistant." },
+      { "role": "user", "content": "What is an OpenAI-compatible API?" }
     ]
   }'
 ```
 
-Field utama:
+Main fields:
 
-| Field | Tipe | Wajib | Keterangan |
+| Field | Type | Required | Notes |
 |---|---|---|---|
-| `model` | string | Ya | Nama model/alias combo, mis. `Chatgpt` (lihat [models.md](models.md)) |
-| `messages` | array | Ya | Daftar pesan dengan `role` dan `content` |
-| `stream` | boolean | Tidak | `true` untuk Server-Sent Events |
+| `model` | string | Yes | Model / combo alias name, e.g. `Chatgpt` (see [models.md](models.md)) |
+| `messages` | array | Yes | List of messages with `role` and `content` |
+| `stream` | boolean | No | `true` for Server-Sent Events |
 
-Response mengikuti bentuk OpenAI: teks jawaban ada di `choices[0].message.content`, dan pemakaian token di objek `usage`.
+The response follows the OpenAI shape: the answer text is in `choices[0].message.content`, and
+token usage is in the `usage` object.
 
 ### GET /v1/models
 
@@ -68,57 +75,64 @@ curl https://enrai.web.id/v1/models \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-Mengembalikan **hanya model combo yang aktif**. Panggil sekali saat aplikasi start lalu cache hasilnya.
+Returns **only the combo models that are currently live**. Call it once at application start and
+cache the result.
 
 ## Streaming
 
-Tambahkan `"stream": true` dan baca response sebagai Server-Sent Events:
+Add `"stream": true` and read the response as Server-Sent Events:
 
 ```bash
 curl -N https://enrai.web.id/v1/chat/completions \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -H "Accept: text/event-stream" \
-  -d '{"model":"Chatgpt","stream":true,"messages":[{"role":"user","content":"Halo"}]}'
+  -d '{"model":"Chatgpt","stream":true,"messages":[{"role":"user","content":"Hello"}]}'
 ```
 
-Aturan yang perlu dipegang di sisi klien:
+Rules to hold on the client side:
 
-1. Setiap potongan datang sebagai baris `data: {...}` dengan delta di `choices[].delta`.
-2. Stream diakhiri dengan `data: [DONE]` — jangan menunggu JSON body tambahan.
-3. Baris yang tidak diawali `data:` adalah komentar SSE; abaikan, jangan di-parse sebagai JSON.
+1. Each chunk arrives as a `data: {...}` line with the delta in `choices[].delta`.
+2. The stream ends with `data: [DONE]` — do not wait for an extra JSON body.
+3. Lines that do not start with `data:` are SSE comments; skip them, do not parse them as JSON.
 
-Contoh klien: [`../examples/python/stream.py`](../examples/python/stream.py), [`../examples/curl/stream.sh`](../examples/curl/stream.sh).
+Client examples: [`../examples/python/stream.py`](../examples/python/stream.py),
+[`../examples/curl/stream.sh`](../examples/curl/stream.sh).
 
-## Rate limit
+## Rate limits
 
 | Endpoint | Limit |
 |---|---|
-| `POST /v1/chat/completions` | 20 request/menit per key (burst 5) |
-| `GET /v1/models` | 60 request/menit per key |
+| `POST /v1/chat/completions` | 20 requests per minute per key (burst 5) |
+| `GET /v1/models` | 60 requests per minute per key |
 
-Angka ini berasal dari halaman [pricing](https://enrai.web.id/pricing) dan [docs](https://enrai.web.id/docs) per 17 November 2026.
+These numbers come from the [pricing](https://enrai.web.id/pricing) and
+[docs](https://enrai.web.id/docs) pages as of 17 November 2026.
 
 ## Error
 
-Error dikembalikan sebagai JSON dengan field `error.message`.
+Errors are returned as JSON with an `error.message` field.
 
-| Status | Arti | Tindakan yang disarankan |
+| Status | Meaning | Suggested action |
 |---|---|---|
-| `401` | Unauthorized — key hilang/tidak valid | Periksa header `Authorization: Bearer ...` |
-| `429` | Rate limit tercapai | Exponential backoff dengan jitter, kurangi konkurensi |
-| `502` | Provider upstream gagal | Coba lagi setelah jeda; bukan kesalahan payload |
-| `500` | Server error | Coba lagi; laporkan bila berulang |
+| `401` | Unauthorized — key missing or invalid | Check the `Authorization: Bearer <key>` header |
+| `429` | Rate limit reached | Exponential backoff with jitter, lower concurrency |
+| `502` | Upstream provider failed | Retry after a pause; it is not a payload error |
+| `500` | Server error | Retry; report it if it repeats |
 
-**Perhatikan:** response `200` dengan `choices` kosong harus diperlakukan sebagai kegagalan. Enrai sudah mencoba ulang ke anggota combo lain lebih dulu, dan bila semuanya kosong server membalas `502`.
+**Note:** a `200` response with empty `choices` must be treated as a failure. Enrai already retries
+against other members of the combo first, and if all of them come back empty the server answers
+with `502`.
 
-## Praktik integrasi yang aman
+## Safe integration practices
 
-- Simpan base URL, nama model, dan key sebagai konfigurasi (`ENRAI_BASE_URL`, `ENRAI_MODEL`, `ENRAI_API_KEY`).
-- Cache daftar model; jangan panggil `/v1/models` di jalur request.
-- Batasi retry (maksimal 3 kali) dan pakai backoff, bukan loop cepat.
-- Log status + `error.message`, jangan log API key.
+- Keep the base URL, model name and key as configuration (`ENRAI_BASE_URL`, `ENRAI_MODEL`,
+  `ENRAI_API_KEY`).
+- Cache the model list; do not call `/v1/models` in the request path.
+- Cap retries (3 at most) and use backoff rather than a tight loop.
+- Log status + `error.message`, never the API key.
 
 ---
 
-Kembali ke [README](../README.md) · [Getting started](getting-started.md) · [Model](models.md) · [FAQ](faq.md) · Situs resmi: <https://enrai.web.id>
+Back to [README](../README.md) · [Getting started](getting-started.md) · [Models](models.md) ·
+[FAQ](faq.md) · Official site: <https://enrai.web.id>

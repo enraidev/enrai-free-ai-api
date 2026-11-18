@@ -1,74 +1,95 @@
-# FAQ API AI Gratis Enrai: Pertanyaan yang Sering Ditanyakan
+# Enrai Free AI API FAQ: Frequently Asked Questions
 
-**← Kembali ke [README](../README.md)** · [Getting started](getting-started.md) · [API reference](api-reference.md) · [Model](models.md) · [FAQ](faq.md)
+**← Back to [README](../README.md)** · [Getting started](getting-started.md) ·
+[API reference](api-reference.md) · [Models](models.md) · [FAQ](faq.md) ·
+[Bahasa Indonesia](id/faq.md)
 
-Terakhir diperbarui: **17 November 2026** · Dokumentasi resmi: <https://enrai.web.id/docs> · Harga & limit: <https://enrai.web.id/pricing>
+Last updated: **17 November 2026** · Official documentation: <https://enrai.web.id/docs> ·
+Pricing & limits: <https://enrai.web.id/pricing>
 
-Jawaban singkat untuk pertanyaan paling umum tentang **API AI gratis** Enrai — layanan **LLM API** dengan endpoint **kompatibel OpenAI**. Semua jawaban mengacu ke situs resmi <https://enrai.web.id> per 17 November 2026.
+Short answers to the most common questions about the **free Enrai AI API** — an **LLM API** service
+with **OpenAI-compatible** endpoints. Every answer refers to the official site
+<https://enrai.web.id> as of 17 November 2026.
 
-## Apakah API AI Enrai benar-benar gratis?
+## Is the Enrai AI API really free?
 
-Ya. Selama masa **public beta**, Enrai menyediakan tier gratis dengan limit yang dipublikasikan, dan pendaftaran tidak meminta kartu kredit. Rincian harga ada di <https://enrai.web.id/pricing>.
+Yes. During **public beta**, Enrai provides a free tier with published limits, and signing up does
+not ask for a credit card. Pricing details are at <https://enrai.web.id/pricing>.
 
-## Apakah Enrai kompatibel dengan OpenAI SDK?
+## Is Enrai compatible with the OpenAI SDK?
 
-Ya. Endpoint-nya mengikuti format OpenAI: `POST /v1/chat/completions` dan `GET /v1/models`. Anda hanya perlu mengganti `baseURL` menjadi `https://enrai.web.id/v1` dan memakai API key Enrai; struktur request, response, dan streaming tidak berubah.
+Yes. The endpoints follow the OpenAI format: `POST /v1/chat/completions` and `GET /v1/models`. You
+only need to change `baseURL` to `https://enrai.web.id/v1` and use an Enrai API key; the request,
+response and streaming structures do not change.
 
-## Bagaimana cara mendapatkan API key?
+## How do I get an API key?
 
-1. Daftar di <https://enrai.web.id/register>.
-2. Masuk dashboard, buka **API Keys**.
-3. Buat key baru dan salin segera — key hanya ditampilkan **sekali**.
+1. Sign up at <https://enrai.web.id/register>.
+2. Sign in to the dashboard and open **API Keys**.
+3. Create a new key and copy it immediately — it is shown only **once**.
 
-Panduan langkah demi langkah: [getting-started.md](getting-started.md).
+Step-by-step guide: [getting-started.md](getting-started.md).
 
-## Model apa saja yang tersedia?
+## Which models are available?
 
-`Chatgpt`, `Deepseek`, dan `GLM` — lihat [models.md](models.md). Daftar terbaru selalu bisa dicek lewat `GET https://enrai.web.id/v1/models`.
+`Chatgpt`, `Deepseek` and `GLM` — see [models.md](models.md). The current list is always available
+through `GET https://enrai.web.id/v1/models`.
 
-## Berapa rate limit-nya?
+## What are the rate limits?
 
 | Endpoint | Limit |
 |---|---|
-| `POST /v1/chat/completions` | 20 request/menit (burst 5) |
-| `GET /v1/models` | 60 request/menit |
+| `POST /v1/chat/completions` | 20 requests per minute (burst 5) |
+| `GET /v1/models` | 60 requests per minute |
 
-Berlaku per API key. Jika terlampaui, server membalas `429`.
+Limits apply per API key. If you exceed them, the server answers `429`.
 
-## Apakah streaming didukung?
+## Is streaming supported?
 
-Ya. Kirim `"stream": true`; response dikirim sebagai Server-Sent Events dan diakhiri `[DONE]`. Detail: [api-reference.md](api-reference.md#streaming).
+Yes. Send `"stream": true`; the response is delivered as Server-Sent Events and ends with
+`[DONE]`. Details: [api-reference.md](api-reference.md#streaming).
 
-## Bahasa apa yang bisa dipakai?
+## Which languages can I use?
 
-Bahasa apa pun yang punya HTTP client: Python, JavaScript/Node.js, PHP, Go, Rust, Java, Kotlin, dan sebagainya. Kalau bahasa tersebut punya SDK OpenAI, SDK itu bisa dipakai langsung dengan base URL Enrai.
+Any language with an HTTP client: Python, JavaScript/Node.js, PHP, Go, Rust, Java, Kotlin and so
+on. If that language has an OpenAI SDK, the SDK works directly with the Enrai base URL.
 
-## Apakah ada dukungan vision atau function calling?
+## Is vision or function calling supported?
 
-Belum ada dokumentasi resminya di situs. Jangan merancang fitur yang bergantung pada kemampuan ini sebelum memastikan di <https://enrai.web.id/docs>. Statusnya ditulis apa adanya di [models.md](models.md): belum dipublikasikan.
+There is no official documentation for it on the site yet. Do not design features that depend on
+those capabilities until you confirm at <https://enrai.web.id/docs>. The status is stated plainly
+in [models.md](models.md): not published.
 
-## Apakah aman untuk produksi?
+## Is it production-ready?
 
-API ini berstatus **public beta**. Cocok untuk prototipe, tools internal, dan eksperimen. Untuk layanan yang tidak boleh gagal, siapkan provider kedua sebagai fallback — karena formatnya OpenAI, berpindah provider hanya mengganti base URL dan key.
+The API is in **public beta**. It is suitable for prototypes, internal tools and experiments. For
+services that must not fail, keep a second provider as a fallback — because the format is OpenAI's,
+switching providers only changes the base URL and the key.
 
-## Apa yang harus dilakukan saat menerima `502`?
+## What should I do when I receive a `502`?
 
-`502` berarti provider upstream gagal setelah failover dicoba. Ulangi permintaan setelah jeda singkat; payload Anda biasanya tidak salah. Kalau berulang dalam waktu lama, cek beranda untuk status model.
+`502` means the upstream provider failed after failover was attempted. Retry the request after a
+short pause; your payload is usually not at fault. If it keeps happening, check the site for model
+status.
 
-## Apakah ada halaman status layanan?
+## Is there a service status page?
 
-Belum dipublikasikan. Status model dan daftar yang sedang aktif terlihat di beranda bagian Models (<https://enrai.web.id/#model>) dan di `GET https://enrai.web.id/v1/models`.
+Not published yet. Model status and the current list are visible on the home page Models section
+(<https://enrai.web.id/#model>) and at `GET https://enrai.web.id/v1/models`.
 
-## Ke mana harus melaporkan bug atau bertanya?
+## Where do I report a bug or ask a question?
 
-Kanal komunitas resmi (grup chat) belum dipublikasikan. Untuk pertanyaan akun, key, atau kuota, gunakan kontak yang tercantum di <https://enrai.web.id>. Untuk masalah dokumentasi di repo ini, buka issue di GitHub; lihat [CONTRIBUTING.md](../CONTRIBUTING.md).
+An official community channel (chat group) is not published yet. For account, key or quota
+questions, use the contact listed at <https://enrai.web.id>. For documentation issues in this
+repository, open a GitHub issue; see [CONTRIBUTING.md](../CONTRIBUTING.md).
 
-## Di mana dokumentasi lengkapnya?
+## Where is the full documentation?
 
-- Dokumentasi resmi: <https://enrai.web.id/docs>
-- Harga & limit: <https://enrai.web.id/pricing>
-- Di repo ini: [getting-started.md](getting-started.md) · [api-reference.md](api-reference.md) · [models.md](models.md)
+- Official documentation: <https://enrai.web.id/docs>
+- Pricing & limits: <https://enrai.web.id/pricing>
+- In this repository: [getting-started.md](getting-started.md) ·
+  [api-reference.md](api-reference.md) · [models.md](models.md)
 
 ---
 
-Kembali ke [README](../README.md) · Situs resmi: <https://enrai.web.id>
+Back to [README](../README.md) · Official site: <https://enrai.web.id>

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Membuat aset raster repo (social preview 1280x640) tanpa dependensi internet.
+"""Generate the repository raster assets (1280x640 social preview) with no internet dependency.
 
-Jalankan dari root repo:
+Run from the repo root:
     python scripts/generate_assets.py
 
 Output: assets/social-preview.png
-Tidak ada data produk yang dikarang di sini: teks diambil dari fakta yang
-dipublikasikan di https://enrai.web.id (base URL, nama model, status beta).
+No invented product data: every string comes from facts published at
+https://enrai.web.id (base URL, model names, beta status).
 """
 
 from __future__ import annotations
@@ -53,13 +53,13 @@ def main() -> int:
     img = Image.new("RGB", (W, H), BG)
     draw = ImageDraw.Draw(img)
 
-    # panel halus di kanan (dekorasi, bukan informasi)
+    # soft panels on the right (decoration only, no information)
     draw.rounded_rectangle([790, 96, 1200, 300], radius=20, fill=PANEL, outline=STROKE, width=2)
     draw.rounded_rectangle([790, 336, 986, 432], radius=16, fill=PANEL, outline=STROKE, width=2)
     draw.rounded_rectangle([1004, 336, 1200, 432], radius=16, fill=PANEL, outline=STROKE, width=2)
     draw.rounded_rectangle([790, 468, 1200, 540], radius=16, fill=PANEL, outline=STROKE, width=2)
 
-    # bar aksen atas
+    # top accent bar
     gradient_bar(draw, 0, 8, W)
 
     # mark
@@ -67,8 +67,8 @@ def main() -> int:
     draw.ellipse([102, 126, 130, 154], fill=ACCENT)
 
     draw.text((184, 92), "Enrai", font=font("bold", 88), fill=FG)
-    draw.text((186, 196), "API AI gratis · kompatibel OpenAI", font=font("regular", 32), fill=(165, 180, 252))
-    draw.text((186, 244), "Satu API key · streaming SSE · public beta", font=font("regular", 24), fill=MUTED)
+    draw.text((186, 196), "Free AI API · OpenAI-compatible", font=font("regular", 32), fill=(165, 180, 252))
+    draw.text((186, 244), "One API key · SSE streaming · public beta", font=font("regular", 24), fill=MUTED)
 
     # domain
     draw.text((822, 128), "Base URL", font=font("regular", 20), fill=MUTED)
@@ -77,18 +77,18 @@ def main() -> int:
     draw.text((822, 200), "Model", font=font("regular", 20), fill=MUTED)
     draw.text((822, 232), "Chatgpt · Deepseek · GLM", font=font("regular", 22), fill=FG)
 
-    draw.text((816, 362), "Batas laju", font=font("regular", 19), fill=MUTED)
-    draw.text((816, 392), "20/menit chat", font=font("regular", 22), fill=FG)
-    draw.text((1030, 362), "Harga", font=font("regular", 19), fill=MUTED)
-    draw.text((1030, 392), "Gratis $0", font=font("regular", 22), fill=(134, 239, 172))
+    draw.text((816, 362), "Rate limit", font=font("regular", 19), fill=MUTED)
+    draw.text((816, 392), "20/min chat", font=font("regular", 22), fill=FG)
+    draw.text((1030, 362), "Price", font=font("regular", 19), fill=MUTED)
+    draw.text((1030, 392), "Free $0", font=font("regular", 22), fill=(134, 239, 172))
 
     draw.text((816, 490), "Status", font=font("regular", 19), fill=MUTED)
-    draw.text((816, 514), "Public beta · tanpa kartu kredit", font=font("regular", 21), fill=FG)
+    draw.text((816, 514), "Public beta · no credit card", font=font("regular", 21), fill=FG)
 
     draw.text((80, 500), "enrai.web.id", font=font("bold", 62), fill=FG)
-    draw.text((82, 580), "Dokumentasi, contoh kode, dan daftar model", font=font("regular", 26), fill=MUTED)
+    draw.text((82, 580), "Docs, code examples, and the model list", font=font("regular", 26), fill=MUTED)
 
-    # chip fitur terverifikasi di bawah tagline
+    # verified feature chips below the tagline
     chips = [("chat completions", 80, 264), ("streaming SSE", 356, 172), ("failover combo", 540, 200)]
     for label, x, width in chips:
         draw.rounded_rectangle([x, 304, x + width, 352], radius=10, fill=PANEL, outline=STROKE, width=2)

@@ -1,81 +1,115 @@
-# Berkontribusi
+# Contributing
 
-Terima kasih sudah mau membantu repo **API AI gratis Enrai** — dokumentasi dan contoh kode untuk <https://enrai.web.id>.
+Thanks for helping with the **free Enrai AI API** repository — documentation and code examples for
+<https://enrai.web.id>.
 
-## Kontribusi yang paling berguna
+Languages: **English is the primary language** of this repo. Indonesian translations live in
+[`README.id.md`](README.id.md) and [`docs/id/`](docs/id/), and are kept in sync with the English
+files.
 
-- **Koreksi fakta:** situs berubah (limit, model, endpoint) tetapi dokumentasi di sini tertinggal.
-- **Contoh kode baru:** PHP, Go, Rust, Java/Kotlin, atau integrasi bot Telegram/WhatsApp.
-- **Perbaikan tautan mati dan typo.**
+## The most useful contributions
 
-## Aturan
+- **Fact corrections:** the site changes (limits, models, endpoints) but this documentation lags
+  behind.
+- **New code examples:** PHP, Go, Rust, Java/Kotlin, or Telegram/WhatsApp bot integrations.
+- **Dead link and typo fixes.**
 
-1. **Jangan kirim API key, token, atau file `.env`.** Pakai `YOUR_API_KEY` atau environment variable `ENRAI_API_KEY`.
-2. **Jangan mengarang fakta.** Kalau sebuah informasi tidak ada di <https://enrai.web.id/docs>, <https://enrai.web.id/pricing>, atau beranda, tulis **"Belum dipublikasikan"** dan jelaskan di PR. Jangan menebak angka.
-3. **Satu perubahan, satu tujuan.** PR kecil lebih cepat ditinjau.
-4. **Contoh harus jalan.** Jalankan dulu (lihat di bawah) dan sebutkan perintah yang Anda pakai di deskripsi PR.
-5. **Tanpa URL lokal.** Satu-satunya alamat layanan yang boleh muncul adalah `https://enrai.web.id` — tidak ada alamat loopback maupun nomor port.
+## Rules
 
-## Menjalankan contoh
+1. **Never send an API key, token or `.env` file.** Use `YOUR_API_KEY` or the `ENRAI_API_KEY`
+   environment variable.
+2. **Do not invent facts.** If a piece of information is not at <https://enrai.web.id/docs>,
+   <https://enrai.web.id/pricing> or the home page, write **"Not published"** and explain it in the
+   PR. Do not guess numbers.
+3. **One change, one purpose.** Small PRs get reviewed faster.
+4. **Examples must run.** Run them first (see below) and mention the command you used in the PR
+   description.
+5. **No local URLs.** The only service address allowed is `https://enrai.web.id` — no loopback
+   address and no port numbers.
+6. **Bilingual changes:** when you change a fact, update the English file and the matching file in
+   `docs/id/` in the same PR.
+
+## Running the examples
 
 ```bash
-export ENRAI_API_KEY="YOUR_API_KEY"   # daftar gratis di https://enrai.web.id/register
+export ENRAI_API_KEY="YOUR_API_KEY"   # sign up free at https://enrai.web.id/register
 
-# Python (SDK openai)
+# Python (openai SDK)
 cd examples/python && pip install -r requirements.txt
-python chat.py "Halo"
+python chat.py "Hello"
 
-# Node.js (tanpa dependency, Node 18+)
+# Node.js (no dependencies, Node 18+)
 cd examples/nodejs
-node chat.mjs "Halo"
-node chat.mjs --stream "Hitung 1 sampai 10"
+node chat.mjs "Hello"
+node chat.mjs --stream "Count from 1 to 10"
 
 # cURL
 cd examples/curl
-./models.sh && ./chat.sh "Halo"
+./models.sh && ./chat.sh "Hello"
 ```
 
-## Gaya penulisan dokumentasi
+## Documentation style
 
-- Bahasa Indonesia untuk dokumen utama; README punya ringkasan English di bagian akhir.
-- H1 memuat kata kunci alami; satu kalimat pengantar di atas; breadcrumb kembali ke README di setiap file `docs/`.
-- Kalimat pendek, tanpa klaim yang tidak bisa dibuktikan ("tercepat", "terbaik", "100% akurat").
-- Tabel untuk data berulang (model, limit, kode error); blok `<details>` untuk bagian panjang.
-- Setiap contoh kode menyebut cara menjalankan dan cara menangani `401`/`429`/`502`.
+- English first, Indonesian second. English files are `README.md`, `docs/*.md`; Indonesian files
+  are `README.id.md`, `docs/id/*.md`.
+- The H1 carries natural keywords; one introductory sentence above it; a breadcrumb back to the
+  README in every `docs/` file, plus a link to the other language.
+- Short sentences, no unverifiable claims ("fastest", "best", "100% accurate").
+- Tables for repeated data (models, limits, error codes); `<details>` blocks for long sections.
+- Every code example states how to run it and how to handle `401`/`429`/`502`.
 
-## Format commit
+## Commit format
 
-[Conventional Commits](https://www.conventionalcommits.org/id/v1.0.0/):
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
 
 ```
-docs: jelaskan rate limit per key
-docs(readme): tambah contoh streaming Node.js
-feat(examples): tambah contoh PHP
-ci: tambah pemeriksaan tautan
-chore: perbarui Dependabot
+docs: explain the per-key rate limit
+docs(readme): add a Node.js streaming example
+feat(examples): add a PHP example
+ci: add a link check
+chore: update Dependabot
 ```
 
-Satu commit untuk satu kelompok perubahan, pesan dalam bahasa Indonesia atau Inggris (konsisten dalam satu PR).
+One commit per group of changes. Messages may be in English or Indonesian — stay consistent inside a
+single PR.
 
-## Alur kerja
+## Workflow
 
 ```bash
 git clone https://github.com/enraidev/enrai-free-ai-api.git
 cd enrai-free-ai-api
-git checkout -b docs/perbaikan-singkat
+git checkout -b docs/short-fix
 # edit...
-git commit -m "docs: perjelas tabel kode error"
-git push origin docs/perbaikan-singkat
+git commit -m "docs: clarify the error code table"
+git push origin docs/short-fix
 ```
 
-Lalu buka Pull Request menggunakan template yang tersedia. Sertakan sumber fakta untuk setiap perubahan teknis.
+Then open a Pull Request using the provided template. Include the source of the facts behind every
+technical change.
 
-## Pemeriksaan otomatis
+## Automated checks
 
-CI menjalankan markdownlint, pemeriksaan tautan (401 pada `/v1/*` wajar karena butuh API key), cek sintaks Python/Node/bash, dan penjaga URL lokal. Pastikan semua hijau sebelum meminta review.
+CI runs markdownlint, a link check (401 on `/v1/*` is expected because an API key is required),
+Python/Node/bash syntax checks, and a local-URL guard. Make sure everything is green before asking
+for review.
 
-## Pertanyaan
+## Questions
 
-- Masalah dokumentasi atau bug di repo: buka [issue](https://github.com/enraidev/enrai-free-ai-api/issues) atau [diskusi](https://github.com/enraidev/enrai-free-ai-api/discussions).
-- Masalah layanan (akun, key, kuota): gunakan kontak resmi di <https://enrai.web.id>.
-- Kerentanan keamanan: ikuti [SECURITY.md](SECURITY.md), jangan buka issue publik.
+- Documentation problems or repo bugs: open an [issue](https://github.com/enraidev/enrai-free-ai-api/issues)
+  or start a [discussion](https://github.com/enraidev/enrai-free-ai-api/discussions).
+- Service problems (account, key, quota): use the official contact at <https://enrai.web.id>.
+- Security vulnerabilities: follow [SECURITY.md](SECURITY.md), do not open a public issue.
+
+## Bahasa Indonesia
+
+Terima kasih sudah mau membantu repo **API AI gratis Enrai**. Ringkasan aturan:
+
+1. **Jangan kirim API key, token, atau file `.env`.**
+2. **Jangan mengarang fakta** — kalau tidak ada di situs resmi, tulis "Belum dipublikasikan".
+3. **Satu perubahan, satu tujuan**; contoh kode harus jalan dan perintahnya disebutkan di PR.
+4. **Tanpa URL lokal** — hanya `https://enrai.web.id`.
+5. **Perubahan dua bahasa:** sunting file Inggris dan file padanannya di `docs/id/` dalam PR yang
+   sama.
+
+Panduan lengkap dalam bahasa Indonesia ada di [`README.id.md`](README.id.md) dan
+[`docs/id/`](docs/id/getting-started.md).

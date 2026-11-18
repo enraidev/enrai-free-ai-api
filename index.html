@@ -1,28 +1,32 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Enrai — API AI Gratis Kompatibel OpenAI</title>
-<meta name="description" content="API AI gratis tanpa kartu kredit: endpoint kompatibel OpenAI, streaming SSE, tiga model siap pakai. Daftar gratis, request pertama dalam tiga langkah.">
-<link rel="canonical" href="https://enrai.web.id/">
+<title>Enrai — Free OpenAI-Compatible AI API for Developers</title>
+<meta name="description" content="Free AI API, no credit card: an OpenAI-compatible endpoint with SSE streaming and three ready-to-use models. Sign up free and send your first request in three steps.">
+<link rel="canonical" href="https://enraidev.github.io/enrai-free-ai-api/">
+<link rel="alternate" hreflang="en" href="https://enraidev.github.io/enrai-free-ai-api/">
+<link rel="alternate" hreflang="id" href="https://enraidev.github.io/enrai-free-ai-api/index.id.html">
+<link rel="alternate" hreflang="x-default" href="https://enraidev.github.io/enrai-free-ai-api/">
 <meta name="theme-color" content="#4f46e5">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Enrai Dev">
 
 <meta property="og:site_name" content="Enrai Dev">
 <meta property="og:type" content="website">
-<meta property="og:locale" content="id_ID">
-<meta property="og:title" content="Enrai — API AI Gratis Kompatibel OpenAI">
-<meta property="og:description" content="Satu API key, banyak model, format OpenAI. Streaming SSE, public beta, tanpa kartu kredit. Base URL https://enrai.web.id/v1.">
-<meta property="og:url" content="https://enrai.web.id/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="id_ID">
+<meta property="og:title" content="Enrai — Free OpenAI-Compatible AI API for Developers">
+<meta property="og:description" content="One API key, several models, OpenAI format. SSE streaming, public beta, no credit card. Base URL https://enrai.web.id/v1.">
+<meta property="og:url" content="https://enraidev.github.io/enrai-free-ai-api/">
 <meta property="og:image" content="https://enraidev.github.io/enrai-free-ai-api/assets/social-preview.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="640">
-<meta property="og:image:alt" content="Enrai — API AI gratis kompatibel OpenAI dengan base URL https://enrai.web.id/v1 dan tiga model: Chatgpt, Deepseek, GLM.">
+<meta property="og:image:alt" content="Enrai — free OpenAI-compatible AI API with base URL https://enrai.web.id/v1 and three models: Chatgpt, Deepseek, GLM.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Enrai — API AI Gratis Kompatibel OpenAI">
-<meta name="twitter:description" content="Satu API key, banyak model, format OpenAI, streaming SSE, tanpa kartu kredit.">
+<meta name="twitter:title" content="Enrai — Free OpenAI-Compatible AI API for Developers">
+<meta name="twitter:description" content="One API key, several models, OpenAI format, SSE streaming, no credit card.">
 <meta name="twitter:image" content="https://enraidev.github.io/enrai-free-ai-api/assets/social-preview.png">
 
 <script type="application/ld+json">
@@ -34,20 +38,20 @@
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Any",
   "url": "https://enrai.web.id/",
-  "description": "API AI gratis yang kompatibel dengan OpenAI SDK: satu API key untuk setiap model yang tersedia, dengan streaming SSE dan failover provider otomatis.",
-  "inLanguage": "id",
+  "description": "Free AI API compatible with the OpenAI SDK: one API key for every available model, with SSE streaming and automatic provider failover.",
+  "inLanguage": "en",
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD",
-    "description": "Tier gratis selama public beta, tanpa kartu kredit."
+    "description": "Free tier during public beta, no credit card."
   },
   "featureList": [
-    "Endpoint POST /v1/chat/completions yang kompatibel OpenAI",
-    "GET /v1/models untuk melihat model yang aktif",
-    "Streaming Server-Sent Events",
-    "Satu API key untuk setiap model yang tersedia",
-    "Tanpa kartu kredit"
+    "OpenAI-compatible POST /v1/chat/completions endpoint",
+    "GET /v1/models to list the live models",
+    "Server-Sent Events streaming",
+    "One API key for every available model",
+    "No credit card required"
   ]
 }
 </script>
@@ -183,13 +187,14 @@
   <div class="wrap nav">
     <a class="brand" href="#main"><span class="dot"></span>Enrai Dev</a>
     <nav>
-      <a href="#fitur">Fitur</a>
-      <a href="#model">Model</a>
-      <a href="#mulai">Mulai cepat</a>
+      <a href="#features">Features</a>
+      <a href="#models">Models</a>
+      <a href="#start">Quick start</a>
       <a href="#faq">FAQ</a>
-      <a href="https://enrai.web.id/docs">Dokumentasi</a>
+      <a href="https://enrai.web.id/docs">Documentation</a>
+      <a href="index.id.html" hreflang="id" lang="id">Bahasa Indonesia</a>
     </nav>
-    <a class="btn" href="https://enrai.web.id/register">Daftar gratis</a>
+    <a class="btn" href="https://enrai.web.id/register">Sign up free</a>
   </div>
 </header>
 
@@ -197,21 +202,21 @@
   <div class="wrap">
     <div class="hero">
       <div>
-        <span class="pill"><i></i>Public beta · tier gratis</span>
-        <h1>API AI gratis yang bicara <em>OpenAI</em>.</h1>
+        <span class="pill"><i></i>Public beta · free tier</span>
+        <h1>A free AI API that speaks <em>OpenAI</em>.</h1>
         <p class="lead">
-          Satu API key, beberapa model, satu base URL. Arahkan SDK OpenAI yang sudah Anda pakai ke
-          <code class="inline">https://enrai.web.id/v1</code> dan biarkan kode Anda apa adanya.
+          One API key, several models, one base URL. Point the OpenAI SDK you already use at
+          <code class="inline">https://enrai.web.id/v1</code> and leave your code as it is.
         </p>
         <div class="cta">
-          <a class="btn" href="https://enrai.web.id/register">Daftar gratis →</a>
-          <a class="btn ghost" href="https://enrai.web.id/docs">Baca dokumentasi</a>
+          <a class="btn" href="https://enrai.web.id/register">Sign up free →</a>
+          <a class="btn ghost" href="https://enrai.web.id/docs">Read the docs</a>
         </div>
         <div class="checks">
-          <span>Tanpa kartu kredit</span>
-          <span>Tiga langkah untuk mulai</span>
-          <span>Streaming SSE</span>
-          <span>Kompatibel SDK OpenAI</span>
+          <span>No credit card</span>
+          <span>Three steps to start</span>
+          <span>SSE streaming</span>
+          <span>OpenAI SDK compatible</span>
         </div>
       </div>
 
@@ -221,13 +226,13 @@
           <button class="tab" role="tab" aria-selected="false" aria-controls="p-node"   data-p="p-node">node</button>
           <button class="tab" role="tab" aria-selected="false" aria-controls="p-python" data-p="p-python">python</button>
         </div>
-        <div id="p-curl" role="tabpanel" class="on"><pre><span class="c"># request pertama</span>
+        <div id="p-curl" role="tabpanel" class="on"><pre><span class="c"># first request</span>
 curl https://enrai.web.id/v1/chat/completions \
   -H <span class="s">"Authorization: Bearer YOUR_API_KEY"</span> \
   -H <span class="s">"Content-Type: application/json"</span> \
   -d <span class="s">'{
     "model": "Chatgpt",
-    "messages": [{"role": "user", "content": "Halo!"}]
+    "messages": [{"role": "user", "content": "Hello!"}]
   }'</span></pre></div>
         <div id="p-node" role="tabpanel"><pre><span class="c">// npm install openai</span>
 <span class="k">import</span> OpenAI <span class="k">from</span> <span class="s">"openai"</span>;
@@ -239,7 +244,7 @@ curl https://enrai.web.id/v1/chat/completions \
 
 <span class="k">const</span> res = <span class="k">await</span> client.chat.completions.create({
   model: <span class="s">"Chatgpt"</span>,
-  messages: [{ role: <span class="s">"user"</span>, content: <span class="s">"Halo!"</span> }],
+  messages: [{ role: <span class="s">"user"</span>, content: <span class="s">"Hello!"</span> }],
 });
 console.log(res.choices[0].message.content);</pre></div>
         <div id="p-python" role="tabpanel"><pre><span class="c"># pip install openai</span>
@@ -252,86 +257,86 @@ client = OpenAI(
 )
 res = client.chat.completions.create(
     model=<span class="s">"Chatgpt"</span>,
-    messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: <span class="s">"Halo!"</span>}],
+    messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: <span class="s">"Hello!"</span>}],
 )
 <span class="k">print</span>(res.choices[0].message.content)</pre></div>
       </div>
     </div>
 
     <div class="stats">
-      <div class="stat"><b>3</b><span>Model siap pakai</span></div>
-      <div class="stat"><b>20/menit</b><span>Batas chat per key</span></div>
-      <div class="stat"><b>1</b><span>Key untuk semua model</span></div>
-      <div class="stat"><b>$0</b><span>Biaya saat mulai</span></div>
+      <div class="stat"><b>3</b><span>Models ready to use</span></div>
+      <div class="stat"><b>20/min</b><span>Chat limit per key</span></div>
+      <div class="stat"><b>1</b><span>Key for every model</span></div>
+      <div class="stat"><b>$0</b><span>Cost to start</span></div>
     </div>
   </div>
 
-  <section id="fitur">
+  <section id="features">
     <div class="wrap">
-      <div class="eyebrow">Kenapa Enrai</div>
-      <h2>Dibuat untuk yang sedang membangun.</h2>
-      <p class="sub">Lapisan tipis di depan beberapa provider model. Anda tetap memakai SDK, prompt, dan kode yang sudah ada — Enrai yang mengurus perutean.</p>
+      <div class="eyebrow">Why Enrai</div>
+      <h2>Built for people who are shipping.</h2>
+      <p class="sub">A thin layer in front of several model providers. You keep your SDK, your prompts and your existing code — Enrai handles the routing.</p>
       <div class="grid">
         <div class="feat">
           <div class="ico" aria-hidden="true">⌁</div>
-          <h3>Endpoint kompatibel OpenAI</h3>
-          <p><code class="inline">POST /v1/chat/completions</code> dan <code class="inline">GET /v1/models</code> mengikuti bentuk OpenAI, jadi SDK dan tools yang sudah ada bekerja hanya dengan mengganti base URL.</p>
+          <h3>OpenAI-compatible endpoints</h3>
+          <p><code class="inline">POST /v1/chat/completions</code> and <code class="inline">GET /v1/models</code> follow the OpenAI shape, so existing SDKs and tools work by changing the base URL.</p>
         </div>
         <div class="feat">
           <div class="ico" aria-hidden="true">⇉</div>
-          <h3>Failover provider otomatis</h3>
-          <p>Setiap nama model adalah combo yang dikelola server. Bila satu provider gagal, permintaan dialihkan ke anggota combo lain alih-alih mengembalikan jawaban kosong.</p>
+          <h3>Automatic provider failover</h3>
+          <p>Every model name is a server-managed combo. When one provider fails, the request is routed to another member of the combo instead of returning an empty answer.</p>
         </div>
         <div class="feat">
           <div class="ico" aria-hidden="true">≡</div>
-          <h3>Streaming SSE</h3>
-          <p>Kirim <code class="inline">"stream": true</code> dan baca potongan jawaban secara real-time dalam format chunk OpenAI, diakhiri <code class="inline">[DONE]</code>.</p>
+          <h3>SSE streaming</h3>
+          <p>Send <code class="inline">"stream": true</code> and read answer chunks in real time in the OpenAI chunk format, terminated by <code class="inline">[DONE]</code>.</p>
         </div>
         <div class="feat">
           <div class="ico" aria-hidden="true">◎</div>
-          <h3>Satu key, banyak model</h3>
-          <p>Tanpa akun per provider. Satu key dari dashboard membuka semua model yang tersedia, dan <code class="inline">/v1/models</code> menunjukkan apa yang aktif saat ini.</p>
+          <h3>One key, many models</h3>
+          <p>No per-provider accounts. One key from the dashboard unlocks every available model, and <code class="inline">/v1/models</code> shows what is live right now.</p>
         </div>
         <div class="feat">
           <div class="ico" aria-hidden="true">⏱</div>
-          <h3>Limit yang dipublikasikan</h3>
-          <p>20 request chat per menit (burst 5) dan 60 request daftar model per menit, per key. Angkanya tertulis di depan, bukan muncul sebagai 429 misterius.</p>
+          <h3>Published limits</h3>
+          <p>20 chat requests per minute (burst 5) and 60 model-list requests per minute, per key. The numbers are written down instead of appearing as a mysterious 429.</p>
         </div>
         <div class="feat">
           <div class="ico" aria-hidden="true">⌘</div>
-          <h3>Masuk ke stack Anda</h3>
-          <p>curl, Node.js, Python, PHP, atau klien apa pun yang bicara format OpenAI — termasuk editor dan tools yang mengizinkan base URL kustom.</p>
+          <h3>Fits your stack</h3>
+          <p>curl, Node.js, Python, PHP, or any client that speaks the OpenAI format — including editors and tools that accept a custom base URL.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="model">
+  <section id="models">
     <div class="wrap">
-      <div class="eyebrow">Model</div>
-      <h2>Tiga model, satu format request.</h2>
-      <p class="sub">Nama model adalah alias stabil. Provider di balik setiap combo dikelola otomatis, sehingga request yang sama tetap bekerja saat satu upstream bermasalah.</p>
+      <div class="eyebrow">Models</div>
+      <h2>Three models, one request format.</h2>
+      <p class="sub">Model names are stable aliases. The providers behind each combo are managed automatically, so the same request keeps working when one upstream has a bad day.</p>
       <table>
-        <thead><tr><th>Model</th><th>Kapabilitas</th><th>Streaming</th><th>Status</th></tr></thead>
+        <thead><tr><th>Model</th><th>Capability</th><th>Streaming</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td><code class="inline">Chatgpt</code></td><td>Chat completion</td><td>Ya</td><td class="ok">Online</td></tr>
-          <tr><td><code class="inline">Deepseek</code></td><td>Chat completion</td><td>Ya</td><td class="ok">Online</td></tr>
-          <tr><td><code class="inline">GLM</code></td><td>Chat completion</td><td>Ya</td><td class="ok">Online</td></tr>
+          <tr><td><code class="inline">Chatgpt</code></td><td>Chat completion</td><td>Yes</td><td class="ok">Online</td></tr>
+          <tr><td><code class="inline">Deepseek</code></td><td>Chat completion</td><td>Yes</td><td class="ok">Online</td></tr>
+          <tr><td><code class="inline">GLM</code></td><td>Chat completion</td><td>Yes</td><td class="ok">Online</td></tr>
         </tbody>
       </table>
-      <p class="sub" style="margin:18px 0 0">Selalu baca <code class="inline">GET https://enrai.web.id/v1/models</code> saat aplikasi start lalu cache hasilnya — jangan memanggilnya di setiap request.</p>
+      <p class="sub" style="margin:18px 0 0">Always read <code class="inline">GET https://enrai.web.id/v1/models</code> at application start and cache the result — do not call it on every request.</p>
     </div>
   </section>
 
-  <section id="mulai">
+  <section id="start">
     <div class="wrap">
-      <div class="eyebrow">Mulai cepat</div>
-      <h2>Tiga langkah dari nol ke jawaban pertama.</h2>
-      <p class="sub">Tanpa build step, tanpa formulir pembayaran, tanpa daftar tunggu.</p>
+      <div class="eyebrow">Quick start</div>
+      <h2>Three steps from zero to a first answer.</h2>
+      <p class="sub">No build step, no payment form, no waitlist.</p>
       <div class="steps">
-        <div class="step"><h3>Buat akun</h3><p><a href="https://enrai.web.id/register">Daftar</a> dengan alamat email. Tidak perlu kartu.</p></div>
-        <div class="step"><h3>Buat API key</h3><p>Buka Dashboard → API Keys. Key ditampilkan sekali — simpan di environment variable.</p></div>
-        <div class="step"><h3>Panggil endpoint</h3><p>Kirim request pertama ke <code class="inline">/v1/chat/completions</code> dengan SDK OpenAI.</p></div>
+        <div class="step"><h3>Create an account</h3><p><a href="https://enrai.web.id/register">Sign up</a> with an email address. No card needed.</p></div>
+        <div class="step"><h3>Create an API key</h3><p>Open Dashboard → API Keys. The key is shown once — store it in an environment variable.</p></div>
+        <div class="step"><h3>Call the endpoint</h3><p>Send your first request to <code class="inline">/v1/chat/completions</code> with the OpenAI SDK.</p></div>
       </div>
     </div>
   </section>
@@ -339,14 +344,14 @@ res = client.chat.completions.create(
   <section id="faq">
     <div class="wrap">
       <div class="eyebrow">FAQ</div>
-      <h2>Pertanyaan yang benar-benar ditanyakan.</h2>
+      <h2>The questions people actually ask.</h2>
       <p class="sub"></p>
-      <details><summary>Apakah benar-benar gratis?</summary><p>Ya. Selama <strong>public beta</strong> tersedia tier gratis tanpa kartu kredit: satu key, semua model yang tersedia, dengan limit yang dipublikasikan di <a href="https://enrai.web.id/pricing">halaman harga</a>.</p></details>
-      <details><summary>Apakah aplikasi saya harus ditulis ulang?</summary><p>Tidak. Kalau Anda sudah memakai SDK OpenAI atau klien kompatibel OpenAI, cukup ganti base URL menjadi <code class="inline">https://enrai.web.id/v1</code> dan API key. Bentuk request, payload, dan response tetap sama.</p></details>
-      <details><summary>Apa yang terjadi kalau provider sedang down?</summary><p>Setiap nama model adalah combo beberapa provider. Permintaan yang gagal diulang ke anggota combo lain. Bila semua percobaan kosong, Anda menerima <code class="inline">502</code> dengan pesan error, bukan jawaban kosong.</p></details>
-      <details><summary>Apakah streaming didukung?</summary><p>Ya — <code class="inline">"stream": true</code> mengembalikan Server-Sent Events dalam format chunk OpenAI, diakhiri <code class="inline">[DONE]</code>.</p></details>
-      <details><summary>Bagaimana dengan data saya?</summary><p>Prompt diteruskan ke provider upstream yang melayani request tersebut; lihat <a href="https://enrai.web.id/privacy-policy">kebijakan privasi</a> dan <a href="https://enrai.web.id/terms-and-conditions">ketentuan layanan</a>. Jangan kirim rahasia yang tidak akan Anda kirim ke API pihak ketiga.</p></details>
-      <details><summary>Apakah siap untuk produksi?</summary><p>Statusnya <strong>public beta</strong>. Cocok untuk prototipe, proyek sampingan, dan tools internal — siapkan provider kedua untuk apa pun yang tidak boleh gagal.</p></details>
+      <details><summary>Is it really free?</summary><p>Yes. During <strong>public beta</strong> there is a free tier with no credit card: one key, every available model, with limits published on the <a href="https://enrai.web.id/pricing">pricing page</a>.</p></details>
+      <details><summary>Do I have to rewrite my application?</summary><p>No. If you already use the OpenAI SDK or an OpenAI-compatible client, just change the base URL to <code class="inline">https://enrai.web.id/v1</code> and the API key. Request, payload and response shapes stay the same.</p></details>
+      <details><summary>What happens when a provider is down?</summary><p>Every model name is a combo of several providers. A failed request is retried against another member of the combo. If every attempt comes back empty, you receive a <code class="inline">502</code> with an error message instead of a blank answer.</p></details>
+      <details><summary>Is streaming supported?</summary><p>Yes — <code class="inline">"stream": true</code> returns Server-Sent Events in the OpenAI chunk format, terminated by <code class="inline">[DONE]</code>.</p></details>
+      <details><summary>What about my data?</summary><p>Prompts are forwarded to the upstream provider serving that request; see the <a href="https://enrai.web.id/privacy-policy">privacy policy</a> and <a href="https://enrai.web.id/terms-and-conditions">terms of service</a>. Do not send secrets you would not send to a third-party API.</p></details>
+      <details><summary>Is it production-ready?</summary><p>It is in <strong>public beta</strong>. Suitable for prototypes, side projects and internal tools — keep a second provider for anything that must not fail.</p></details>
     </div>
   </section>
 
@@ -354,10 +359,10 @@ res = client.chat.completions.create(
     <div class="wrap">
       <div class="banner">
         <div>
-          <h2>Ambil key, kirim satu request.</h2>
-          <p>Gratis selama public beta. Kalau request pertama mengembalikan teks, bagian tersulit sudah lewat.</p>
+          <h2>Get a key, send one request.</h2>
+          <p>Free during public beta. If your first request returns text, you are past the hard part.</p>
         </div>
-        <a class="btn" href="https://enrai.web.id/register">Mulai membangun →</a>
+        <a class="btn" href="https://enrai.web.id/register">Start building →</a>
       </div>
     </div>
   </section>
@@ -367,12 +372,13 @@ res = client.chat.completions.create(
   <div class="wrap foot">
     <div>© 2026 Enrai Dev · Public beta · <a href="https://enrai.web.id">enrai.web.id</a></div>
     <nav>
-      <a href="https://enrai.web.id/docs">Dokumentasi</a>
-      <a href="https://enrai.web.id/pricing">Harga</a>
+      <a href="https://enrai.web.id/docs">Documentation</a>
+      <a href="https://enrai.web.id/pricing">Pricing</a>
       <a href="https://enrai.web.id/blog">Blog</a>
-      <a href="https://enrai.web.id/privacy-policy">Privasi</a>
-      <a href="https://enrai.web.id/terms-and-conditions">Ketentuan</a>
+      <a href="https://enrai.web.id/privacy-policy">Privacy</a>
+      <a href="https://enrai.web.id/terms-and-conditions">Terms</a>
       <a href="https://github.com/enraidev/enrai-free-ai-api">GitHub</a>
+      <a href="index.id.html" hreflang="id" lang="id">Bahasa Indonesia</a>
     </nav>
   </div>
 </footer>
@@ -394,50 +400,50 @@ res = client.chat.completions.create(
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Apakah benar-benar gratis?",
+      "name": "Is it really free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ya. Selama public beta tersedia tier gratis tanpa kartu kredit: satu API key, semua model yang tersedia, dengan limit yang dipublikasikan di https://enrai.web.id/pricing."
+        "text": "Yes. During public beta there is a free tier with no credit card: one API key, every available model, with limits published at https://enrai.web.id/pricing."
       }
     },
     {
       "@type": "Question",
-      "name": "Apakah aplikasi saya harus ditulis ulang?",
+      "name": "Do I have to rewrite my application?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tidak. Kalau aplikasi sudah memakai SDK OpenAI atau klien kompatibel OpenAI, cukup ganti base URL menjadi https://enrai.web.id/v1 dan API key. Bentuk request, payload, dan response tetap sama."
+        "text": "No. If the application already uses the OpenAI SDK or an OpenAI-compatible client, you only change the base URL to https://enrai.web.id/v1 and the API key. Request, payload and response shapes stay the same."
       }
     },
     {
       "@type": "Question",
-      "name": "Apa yang terjadi kalau provider sedang down?",
+      "name": "What happens when a provider is down?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Setiap nama model adalah combo beberapa provider. Permintaan yang gagal diulang ke anggota combo lain. Bila semua percobaan kosong, API membalas 502 dengan pesan error, bukan jawaban kosong."
+        "text": "Every model name is a combo of several providers. A failed request is retried against another member of the combo. If every attempt comes back empty, the API answers 502 with an error message instead of a blank answer."
       }
     },
     {
       "@type": "Question",
-      "name": "Apakah streaming didukung?",
+      "name": "Is streaming supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ya, kirim \"stream\": true untuk menerima Server-Sent Events dalam format chunk OpenAI, diakhiri [DONE]."
+        "text": "Yes, send \"stream\": true to receive Server-Sent Events in the OpenAI chunk format, terminated by [DONE]."
       }
     },
     {
       "@type": "Question",
-      "name": "Bagaimana dengan data saya?",
+      "name": "What about my data?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Prompt diteruskan ke provider upstream yang melayani request tersebut. Rincian ada di https://enrai.web.id/privacy-policy dan https://enrai.web.id/terms-and-conditions. Jangan kirim rahasia yang tidak akan Anda kirim ke API pihak ketiga."
+        "text": "Prompts are forwarded to the upstream provider serving that request. Details are at https://enrai.web.id/privacy-policy and https://enrai.web.id/terms-and-conditions. Do not send secrets you would not send to a third-party API."
       }
     },
     {
       "@type": "Question",
-      "name": "Apakah siap untuk produksi?",
+      "name": "Is it production-ready?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Statusnya public beta: cocok untuk prototipe, proyek sampingan, dan tools internal. Siapkan provider kedua untuk apa pun yang tidak boleh gagal."
+        "text": "It is in public beta: suitable for prototypes, side projects and internal tools. Keep a second provider for anything that must not fail."
       }
     }
   ]

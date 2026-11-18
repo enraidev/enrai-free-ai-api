@@ -1,57 +1,63 @@
-# Getting Started: Cara Daftar dan Memakai API AI Gratis Enrai
+# Getting Started: Sign Up and Use the Free Enrai AI API
 
-**← Kembali ke [README](../README.md)** · [Getting started](getting-started.md) · [API reference](api-reference.md) · [Model](models.md) · [FAQ](faq.md)
+**← Back to [README](../README.md)** · [Getting started](getting-started.md) ·
+[API reference](api-reference.md) · [Models](models.md) · [FAQ](faq.md) ·
+[Bahasa Indonesia](id/getting-started.md)
 
-Terakhir diperbarui: **17 November 2026** · Dokumentasi resmi: <https://enrai.web.id/docs> · Harga & limit: <https://enrai.web.id/pricing>
+Last updated: **17 November 2026** · Official documentation: <https://enrai.web.id/docs> ·
+Pricing & limits: <https://enrai.web.id/pricing>
 
-Panduan ini menuntun Anda dari nol sampai request pertama ke **API AI gratis** Enrai — daftar akun, mengambil API key, dan memanggil endpoint yang **kompatibel OpenAI**. Waktu tempuh sekitar dua menit.
+This guide takes you from zero to your first request against the **free Enrai AI API** — create an
+account, get an API key, and call the **OpenAI-compatible** endpoint. It takes about two minutes.
 
-Dokumentasi resmi: <https://enrai.web.id/docs> · Daftar: <https://enrai.web.id/register> · Limit & harga: <https://enrai.web.id/pricing>
+Official documentation: <https://enrai.web.id/docs> · Sign up: <https://enrai.web.id/register> ·
+Limits & pricing: <https://enrai.web.id/pricing>
 
-## Ringkasan cepat
+## Quick reference
 
-| Item | Nilai |
+| Item | Value |
 |---|---|
 | Base URL | `https://enrai.web.id/v1` |
-| Endpoint chat | `POST https://enrai.web.id/v1/chat/completions` |
-| Endpoint model | `GET https://enrai.web.id/v1/models` |
-| Autentikasi | Header `Authorization: Bearer <API_KEY>` |
-| Model awal | `Chatgpt` (lihat [models.md](models.md)) |
-| Biaya | Gratis, tanpa kartu kredit (public beta) |
+| Chat endpoint | `POST https://enrai.web.id/v1/chat/completions` |
+| Models endpoint | `GET https://enrai.web.id/v1/models` |
+| Authentication | `Authorization: Bearer <key>` header |
+| Starting model | `Chatgpt` (see [models.md](models.md)) |
+| Cost | Free, no credit card (public beta) |
 
-## 1. Buat akun
+## 1. Create an account
 
-1. Buka <https://enrai.web.id/register>.
-2. Isi email dan password, lalu selesaikan pendaftaran.
-3. Tidak ada form pembayaran dan tidak ada kartu kredit yang diminta.
+1. Open <https://enrai.web.id/register>.
+2. Enter an email and password, then finish signing up.
+3. There is no payment form and no credit card is requested.
 
-Sudah punya akun? Langsung ke <https://enrai.web.id/login>.
+Already have an account? Go straight to <https://enrai.web.id/login>.
 
-## 2. Ambil API key
+## 2. Get an API key
 
-1. Masuk ke dashboard.
-2. Buka **API Keys**.
-3. Klik buat key baru, lalu **salin segera** — key hanya ditampilkan sekali.
+1. Sign in to the dashboard.
+2. Open **API Keys**.
+3. Create a new key and **copy it immediately** — it is shown only once.
 
-Simpan sebagai environment variable, bukan di dalam kode:
+Store it as an environment variable, not inside your code:
 
 ```bash
 export ENRAI_API_KEY="YOUR_API_KEY"
 ```
 
-Jika key bocor, hapus/rotasi dari dashboard dan buat yang baru. Jangan pernah commit key ke GitHub.
+If a key leaks, delete or rotate it in the dashboard and create a new one. Never commit a key to
+GitHub.
 
-## 3. Request pertama
+## 3. First request
 
 ### cURL
 
 ```bash
 curl https://enrai.web.id/v1/chat/completions \
-  -H "Authorization: Bearer $ENRAI_API_KEY" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "Chatgpt",
-    "messages": [{"role": "user", "content": "Halo, ini request pertama saya."}]
+    "messages": [{"role": "user", "content": "Hello, this is my first request."}]
   }'
 ```
 
@@ -72,7 +78,7 @@ client = OpenAI(
 
 res = client.chat.completions.create(
     model="Chatgpt",
-    messages=[{"role": "user", "content": "Halo, ini request pertama saya."}],
+    messages=[{"role": "user", "content": "Hello, this is my first request."}],
 )
 print(res.choices[0].message.content)
 ```
@@ -93,39 +99,41 @@ const client = new OpenAI({
 
 const res = await client.chat.completions.create({
   model: "Chatgpt",
-  messages: [{ role: "user", content: "Halo, ini request pertama saya." }],
+  messages: [{ role: "user", content: "Hello, this is my first request." }],
 });
 console.log(res.choices[0].message.content);
 ```
 
-Kalau balasan berisi teks di `choices[0].message.content`, integrasi dasar Anda sudah benar.
+If the reply contains text in `choices[0].message.content`, your basic integration is correct.
 
-Contoh yang lebih lengkap (termasuk streaming) ada di [`../examples/`](../examples/README.md).
+More complete examples (including streaming) are in [`../examples/`](../examples/README.md).
 
-## 4. Cek model yang aktif
+## 4. Check which models are live
 
 ```bash
 curl https://enrai.web.id/v1/models \
-  -H "Authorization: Bearer $ENRAI_API_KEY"
+  -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-Panggil sekali saat aplikasi start, lalu **cache** hasilnya. Jangan memanggil endpoint ini di setiap request — limit-nya 60 request/menit per key.
+Call this once when your application starts, then **cache** the result. Do not call it on every
+request — it is limited to 60 requests per minute per key.
 
 ## 5. Troubleshooting
 
-| Gejala | Penyebab paling sering | Solusi |
+| Symptom | Most common cause | Fix |
 |---|---|---|
-| `401` | Key salah, kedaluwarsa, atau header kurang | Pastikan formatnya `Authorization: Bearer <key>` tanpa spasi tambahan |
-| `429` | Melewati 20 request/menit (burst 5) | Backoff eksponensial, kurangi konkurensi, antrekan request |
-| `502` | Semua provider di balik combo gagal | Ulangi beberapa saat lagi; ini bukan kesalahan payload Anda |
-| `500` | Galat server | Coba lagi; kalau berulang, laporkan ke pemilik layanan |
-| Balasan kosong | Upstream mengembalikan jawaban kosong | Perlakukan sebagai kegagalan, retry sekali, lalu tangani sebagai error |
+| `401` | Wrong or expired key, or a missing header | Make sure it reads `Authorization: Bearer <key>` with no extra spaces |
+| `429` | Over 20 requests/minute (burst 5) | Exponential backoff, lower concurrency, queue requests |
+| `502` | Every provider behind the combo failed | Retry in a moment; this is not your payload's fault |
+| `500` | Server error | Try again; if it repeats, report it to the service owner |
+| Empty reply | Upstream returned an empty answer | Treat it as a failure, retry once, then handle it as an error |
 
-Daftar kode error lengkap: [`api-reference.md`](api-reference.md#error).
+Full error code list: [`api-reference.md`](api-reference.md#error).
 
-## 6. Kalau butuh mengganti provider
+## 6. If you need to switch providers
 
-Karena API ini mengikuti format OpenAI, pindah provider berarti mengganti dua hal: `base_url` dan `api_key`. Simpan keduanya sebagai konfigurasi, bukan konstanta:
+Because this API follows the OpenAI format, moving to another provider means changing two things:
+`base_url` and `api_key`. Keep both as configuration, not as constants:
 
 ```bash
 ENRAI_BASE_URL=https://enrai.web.id/v1
@@ -135,4 +143,5 @@ ENRAI_API_KEY=YOUR_API_KEY
 
 ---
 
-Sumber kebenaran tetap situs resmi: <https://enrai.web.id/docs>. Kembali ke [README](../README.md) · [API reference](api-reference.md) · [Model](models.md) · [FAQ](faq.md)
+The official site remains the source of truth: <https://enrai.web.id/docs>. Back to
+[README](../README.md) · [API reference](api-reference.md) · [Models](models.md) · [FAQ](faq.md)

@@ -1,14 +1,14 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Dokumentasi API resmi
+  - name: Official API documentation
     url: https://enrai.web.id/docs
-    about: Endpoint, autentikasi, streaming, dan kode error.
-  - name: Harga & limit
+    about: Endpoints, authentication, streaming and error codes.
+  - name: Pricing & limits
     url: https://enrai.web.id/pricing
-    about: Rate limit dan ketentuan tier gratis.
-  - name: Diskusi (Q&A dan ide)
+    about: Rate limits and free-tier terms.
+  - name: Discussions (Q&A and ideas)
     url: https://github.com/enraidev/enrai-free-ai-api/discussions
-    about: Tanya jawab pemakaian, usulan model/fitur, dan pengumuman.
-  - name: Kerentanan keamanan
+    about: Usage questions, model/feature suggestions and announcements.
+  - name: Security vulnerability
     url: https://github.com/enraidev/enrai-free-ai-api/security/advisories/new
-    about: Laporkan secara privat, jangan lewat issue publik.
+    about: Report privately, never through a public issue.

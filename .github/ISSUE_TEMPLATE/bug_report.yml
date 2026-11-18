@@ -1,76 +1,78 @@
-name: "Laporan bug"
-description: "Laporkan kesalahan di dokumentasi atau contoh kode repo ini."
+name: "Bug report"
+description: "Report an error in the documentation or code examples of this repository."
 title: "[bug] "
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Terima kasih sudah melapor. **Jangan menempelkan API key asli** di issue — sensor dulu.
+        Thanks for reporting. **Never paste a real API key** in an issue — redact it first.
 
-        Masalah akun, kuota, key, atau layanan `enrai.web.id` bukan lingkup repo ini; gunakan kontak resmi di <https://enrai.web.id>. Kerentanan keamanan: ikuti [SECURITY.md](https://github.com/enraidev/enrai-free-ai-api/blob/main/SECURITY.md).
+        Account, quota, key or `enrai.web.id` service problems are out of scope for this repository; use the official contact at <https://enrai.web.id>. Security vulnerabilities: follow [SECURITY.md](https://github.com/enraidev/enrai-free-ai-api/blob/main/SECURITY.md).
   - type: dropdown
     id: area
     attributes:
-      label: Bagian yang bermasalah
+      label: Area affected
       options:
-        - README
+        - README.md
+        - README.id.md
         - docs/getting-started.md
         - docs/api-reference.md
         - docs/models.md
         - docs/faq.md
+        - docs/id (Indonesian docs)
         - examples/python
         - examples/nodejs
         - examples/curl
         - examples/openai-sdk
-        - CI / otomasi
-        - Lainnya
+        - CI / automation
+        - Other
     validations:
       required: true
   - type: textarea
     id: what-happened
     attributes:
-      label: Apa yang terjadi?
-      description: Jelaskan gejala yang Anda lihat, termasuk teks error apa adanya.
+      label: What happened?
+      description: Describe the symptoms you saw, including the error text verbatim.
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: Apa yang Anda harapkan?
+      label: What did you expect?
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: Langkah reproduksi
+      label: Reproduction steps
       placeholder: |
-        1. Buka ...
-        2. Jalankan ...
-        3. Lihat error ...
+        1. Open ...
+        2. Run ...
+        3. See error ...
     validations:
       required: true
   - type: input
     id: environment
     attributes:
-      label: Lingkungan
-      description: OS, versi Python/Node.js, dan bahasa contoh yang dipakai.
+      label: Environment
+      description: OS, Python/Node.js version, and the example language you used.
       placeholder: "Windows 11, Python 3.12, openai 3.52.0"
     validations:
       required: false
   - type: textarea
     id: source
     attributes:
-      label: Sumber fakta (untuk kesalahan dokumentasi)
-      description: Tautan ke halaman <https://enrai.web.id> yang menunjukkan perilaku sebenarnya.
+      label: Source of the facts (for documentation errors)
+      description: Link to the <https://enrai.web.id> page that shows the actual behaviour.
     validations:
       required: false
   - type: checkboxes
     id: confirmations
     attributes:
-      label: Konfirmasi
+      label: Confirmations
       options:
-        - label: Saya tidak menempelkan API key atau data pribadi di laporan ini.
+        - label: I have not pasted an API key or personal data in this report.
           required: true
-        - label: Saya sudah mencari issue serupa sebelum membuka yang baru.
+        - label: I searched for similar issues before opening a new one.
           required: true

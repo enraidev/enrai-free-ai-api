@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Streaming (Server-Sent Events) dengan API AI gratis Enrai.
+"""Streaming (Server-Sent Events) with the free Enrai AI API.
 
-Pemakaian:
+Usage:
     export ENRAI_API_KEY="YOUR_API_KEY"
-    python stream.py "Tulis pantun tentang kopi."
+    python stream.py "Write a short paragraph about APIs."
 
-Dokumentasi streaming: https://enrai.web.id/docs
+Streaming docs: https://enrai.web.id/docs
 """
 
 from __future__ import annotations
@@ -22,10 +22,10 @@ MODEL = os.environ.get("ENRAI_MODEL", "Chatgpt")
 def main() -> int:
     api_key = os.environ.get("ENRAI_API_KEY")
     if not api_key:
-        print("ENRAI_API_KEY belum di-set. Jalankan: export ENRAI_API_KEY='YOUR_API_KEY'", file=sys.stderr)
+        print("ENRAI_API_KEY is not set. Run: export ENRAI_API_KEY='YOUR_API_KEY'", file=sys.stderr)
         return 2
 
-    prompt = " ".join(sys.argv[1:]) or "Tulis paragraf singkat tentang API."
+    prompt = " ".join(sys.argv[1:]) or "Write a short paragraph about APIs."
 
     client = OpenAI(base_url=BASE_URL, api_key=api_key)
 
@@ -44,20 +44,20 @@ def main() -> int:
             if piece:
                 got_text = True
                 print(piece, end="", flush=True)
-    except Exception as exc:  # noqa: BLE001 - contoh
+    except Exception as exc:  # noqa: BLE001 - example
         status = getattr(exc, "status_code", None)
         hints = {
-            401: "API key tidak valid.",
-            429: "rate limit tercapai (20 request/menit).",
-            502: "provider upstream gagal, ulangi nanti.",
+            401: "invalid API key.",
+            429: "rate limit reached (20 requests/minute).",
+            502: "upstream provider failed, retry later.",
         }
-        hint = hints.get(status, "permintaan gagal.") if isinstance(status, int) else "permintaan gagal."
+        hint = hints.get(status, "request failed.") if isinstance(status, int) else "request failed."
         print(f"\n[{status or 'error'}] {hint} ({exc})", file=sys.stderr)
         return 1
 
     print()
     if not got_text:
-        print("Stream selesai tanpa teks — perlakukan sebagai kegagalan.", file=sys.stderr)
+        print("Stream finished without text - treat it as a failure.", file=sys.stderr)
         return 1
     return 0
 

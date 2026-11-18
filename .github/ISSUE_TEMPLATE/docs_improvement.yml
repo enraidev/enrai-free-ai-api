@@ -1,41 +1,41 @@
-name: "Perbaikan dokumentasi"
-description: "Ada dokumentasi yang salah, tidak jelas, atau tertinggal dari situs."
+name: "Documentation improvement"
+description: "Some documentation is wrong, unclear, or behind the site."
 title: "[docs] "
 labels: ["documentation"]
 body:
   - type: input
     id: location
     attributes:
-      label: File dan bagian
-      placeholder: "docs/api-reference.md → bagian Rate limit"
+      label: File and section
+      placeholder: "docs/api-reference.md → Rate limits"
     validations:
       required: true
   - type: textarea
     id: current
     attributes:
-      label: Isi saat ini
-      description: Kutip kalimat atau tabel yang bermasalah.
+      label: Current content
+      description: Quote the sentence or table that is wrong.
     validations:
       required: true
   - type: textarea
     id: correction
     attributes:
-      label: Seharusnya
-      description: Tulis usulan perbaikan. Sertakan tautan sumber di situs untuk setiap angka atau klaim.
+      label: What it should say
+      description: Write the proposed correction. Include the source link on the site for every number or claim.
     validations:
       required: true
   - type: input
     id: source
     attributes:
-      label: Sumber
-      description: Halaman <https://enrai.web.id> yang menjadi acuan.
+      label: Source
+      description: The <https://enrai.web.id> page this is based on.
       placeholder: "https://enrai.web.id/pricing"
     validations:
       required: false
   - type: checkboxes
     id: confirmations
     attributes:
-      label: Konfirmasi
+      label: Confirmation
       options:
-        - label: Klaim di usulan ini bisa saya tunjukkan sumbernya di situs resmi.
+        - label: I can point to the official site as the source for every claim in this proposal.
           required: true

@@ -1,32 +1,44 @@
-# Enrai — API AI gratis yang kompatibel OpenAI
+# Enrai — Free OpenAI-Compatible AI API
 
-> Enrai adalah API AI gratis untuk developer: satu API key untuk beberapa model (Chatgpt, Deepseek, GLM),
-> lewat REST API kompatibel OpenAI (`POST /v1/chat/completions`, `GET /v1/models`) dengan streaming SSE
-> dan failover provider otomatis. Base URL: https://enrai.web.id/v1
+> Enrai is a free AI API for developers: one API key for several models (Chatgpt, Deepseek, GLM),
+> exposed through an OpenAI-compatible REST API (`POST /v1/chat/completions`, `GET /v1/models`)
+> with SSE streaming and automatic provider failover. Base URL: https://enrai.web.id/v1
 
-Status: public beta, tier gratis tanpa kartu kredit.
-Rate limit per API key: 20 request/menit untuk chat completion (burst 5), 60 request/menit untuk daftar model.
-Kode error: 401 (key tidak valid), 429 (rate limit), 500 (galat server), 502 (seluruh provider di balik combo gagal).
+Status: public beta, free tier with no credit card.
+Rate limits per API key: 20 requests/minute for chat completions (burst 5), 60 requests/minute for
+the model list.
+Error codes: 401 (invalid key), 429 (rate limit), 500 (server error), 502 (every provider behind
+the combo failed).
 
-## Dokumentasi
+Languages: English (primary, this file), Indonesian (secondary, https://github.com/enraidev/enrai-free-ai-api/blob/main/README.id.md).
 
-- [README](https://github.com/enraidev/enrai-free-ai-api/blob/main/README.md): ringkasan, quick start, tabel model dan limit, FAQ
-- [Getting started](https://github.com/enraidev/enrai-free-ai-api/blob/main/docs/getting-started.md): daftar, ambil key, request pertama, troubleshooting
-- [API reference](https://github.com/enraidev/enrai-free-ai-api/blob/main/docs/api-reference.md): endpoint, autentikasi, streaming, error
-- [Daftar model](https://github.com/enraidev/enrai-free-ai-api/blob/main/docs/models.md): nama model, alias combo, cara cek model aktif
+## Documentation
+
+- [README](https://github.com/enraidev/enrai-free-ai-api/blob/main/README.md): overview, quick start, model and limit tables, FAQ
+- [Getting started](https://github.com/enraidev/enrai-free-ai-api/blob/main/docs/getting-started.md): sign up, get a key, first request, troubleshooting
+- [API reference](https://github.com/enraidev/enrai-free-ai-api/blob/main/docs/api-reference.md): endpoints, authentication, streaming, errors
+- [Models](https://github.com/enraidev/enrai-free-ai-api/blob/main/docs/models.md): model names, combo aliases, checking which models are live
 - [FAQ](https://github.com/enraidev/enrai-free-ai-api/blob/main/docs/faq.md)
 
-## Contoh kode
+## Code examples
 
 - [Python](https://github.com/enraidev/enrai-free-ai-api/blob/main/examples/python/chat.py)
 - [Node.js](https://github.com/enraidev/enrai-free-ai-api/blob/main/examples/nodejs/chat.mjs)
 - [cURL](https://github.com/enraidev/enrai-free-ai-api/blob/main/examples/curl/chat.sh)
 - [OpenAI SDK (Python & Node.js)](https://github.com/enraidev/enrai-free-ai-api/blob/main/examples/openai-sdk/README.md)
 
-## Tautan resmi
+## Official links
 
-- Situs: https://enrai.web.id
-- Dokumentasi: https://enrai.web.id/docs
-- Harga & limit: https://enrai.web.id/pricing
+- Website: https://enrai.web.id
+- Documentation: https://enrai.web.id/docs
+- Pricing & limits: https://enrai.web.id/pricing
 - Blog: https://enrai.web.id/blog
-- Daftar gratis: https://enrai.web.id/register
+- Free sign-up: https://enrai.web.id/register
+
+## Bahasa Indonesia
+
+Enrai adalah API AI gratis untuk developer: satu API key untuk beberapa model (Chatgpt, Deepseek,
+GLM) lewat REST API kompatibel OpenAI dengan streaming SSE dan failover provider otomatis. Base URL:
+https://enrai.web.id/v1 · Status: public beta, tier gratis tanpa kartu kredit · Rate limit per API
+key: 20 request/menit untuk chat completion (burst 5), 60 request/menit untuk daftar model.
+Dokumentasi bahasa Indonesia: https://github.com/enraidev/enrai-free-ai-api/blob/main/README.id.md

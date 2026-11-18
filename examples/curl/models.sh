@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# Cek model API yang aktif di Enrai (API AI gratis, kompatibel OpenAI).
-# Pemakaian:
+# List the live Enrai models (free AI API, OpenAI-compatible).
+# Usage:
 #   export ENRAI_API_KEY="YOUR_API_KEY"
 #   ./models.sh
-# Dokumentasi: https://enrai.web.id/docs
+# Documentation: https://enrai.web.id/docs
 
 set -euo pipefail
 
-: "${ENRAI_API_KEY:?Set dulu: export ENRAI_API_KEY='YOUR_API_KEY' (daftar gratis di https://enrai.web.id/register)}"
+: "${ENRAI_API_KEY:?Set it first: export ENRAI_API_KEY='YOUR_API_KEY' (sign up free at https://enrai.web.id/register)}"
 
 response="$(curl -sS -w '\n%{http_code}' https://enrai.web.id/v1/models \
   -H "Authorization: Bearer ${ENRAI_API_KEY}")"
@@ -18,9 +18,9 @@ body="${response%$'\n'*}"
 if [ "$status" != "200" ]; then
   echo "HTTP ${status}: ${body}" >&2
   case "$status" in
-    401) echo "API key tidak valid. Periksa ENRAI_API_KEY." >&2 ;;
-    429) echo "Rate limit tercapai (60 request/menit untuk endpoint ini)." >&2 ;;
-    *)   echo "Permintaan gagal." >&2 ;;
+    401) echo "Invalid API key. Check ENRAI_API_KEY." >&2 ;;
+    429) echo "Rate limit reached (60 requests/minute for this endpoint)." >&2 ;;
+    *)   echo "Request failed." >&2 ;;
   esac
   exit 1
 fi

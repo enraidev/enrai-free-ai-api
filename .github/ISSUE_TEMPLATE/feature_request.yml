@@ -1,38 +1,38 @@
-name: "Usulan fitur"
-description: "Usulkan contoh kode, bagian dokumentasi, atau perbaikan pengalaman developer."
-title: "[fitur] "
+name: "Feature request"
+description: "Suggest a code example, a documentation section, or a developer-experience improvement."
+title: "[feature] "
 labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
-        Usulan yang paling cepat diterima: contoh kode bahasa baru, atau bagian dokumentasi yang jelas tujuannya.
+        Suggestions that get accepted fastest: a new language example, or a documentation section with a clear purpose.
 
-        Fitur **layanan** (model baru, kuota, endpoint baru) dikelola di `enrai.web.id`, bukan di repo ini — sampaikan lewat kontak resmi atau Diskusi kategori Ideas.
+        **Service** features (new models, quotas, new endpoints) are managed at `enrai.web.id`, not in this repository — send them through the official contact or the Discussions Ideas category.
   - type: textarea
     id: problem
     attributes:
-      label: Masalah yang ingin diselesaikan
-      description: Situasi apa yang membuat Anda butuh ini?
+      label: Problem to solve
+      description: What situation makes you need this?
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Usulan solusi
-      description: Mis. "contoh PHP dengan cURL" atau "bagian troubleshooting timeout".
+      label: Proposed solution
+      description: For example "a PHP example with cURL" or "a timeout troubleshooting section".
     validations:
       required: true
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatif yang sudah dipertimbangkan
+      label: Alternatives considered
     validations:
       required: false
   - type: checkboxes
     id: scope
     attributes:
-      label: Lingkup
+      label: Scope
       options:
-        - label: Usulan ini bisa diselesaikan hanya dengan mengubah repo ini (dokumentasi/contoh).
+        - label: This request can be delivered by changing only this repository (documentation/examples).
           required: true

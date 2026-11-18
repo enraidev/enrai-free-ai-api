@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# Streaming SSE via curl ke API AI gratis Enrai.
-# Pemakaian:
+# SSE streaming with curl against the free Enrai AI API.
+# Usage:
 #   export ENRAI_API_KEY="YOUR_API_KEY"
-#   ./stream.sh "Hitung 1 sampai 10."
-# Dokumentasi: https://enrai.web.id/docs
+#   ./stream.sh "Count from 1 to 10."
+# Documentation: https://enrai.web.id/docs
 
 set -euo pipefail
 
-: "${ENRAI_API_KEY:?Set dulu: export ENRAI_API_KEY='YOUR_API_KEY' (daftar gratis di https://enrai.web.id/register)}"
+: "${ENRAI_API_KEY:?Set it first: export ENRAI_API_KEY='YOUR_API_KEY' (sign up free at https://enrai.web.id/register)}"
 
 MODEL="${ENRAI_MODEL:-Chatgpt}"
-prompt="${*:-Tulis paragraf singkat tentang API.}"
+prompt="${*:-Write a short paragraph about APIs.}"
 
 escaped="$(printf '%s' "$prompt" | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g')"
 

@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Chat completion dengan SDK resmi `openai` untuk API AI gratis Enrai.
+"""Chat completion with the official `openai` SDK against the free Enrai AI API.
 
-Pemakaian:
+Usage:
     export ENRAI_API_KEY="YOUR_API_KEY"
-    python chat.py "Halo, apa kabar?"
-    python chat.py --stream "Hitung 1 sampai 10."
+    python chat.py "Hello, how are you?"
+    python chat.py --stream "Count from 1 to 10."
 
-Variabel lingkungan:
-    ENRAI_API_KEY  wajib, API key dari https://enrai.web.id/register
-    ENRAI_MODEL    opsional, default Chatgpt (Deepseek, GLM)
+Environment variables:
+    ENRAI_API_KEY  required, API key from https://enrai.web.id/register
+    ENRAI_MODEL    optional, defaults to Chatgpt (Deepseek, GLM)
 
-Dokumentasi: https://enrai.web.id/docs
+Documentation: https://enrai.web.id/docs
 """
 
 from __future__ import annotations
@@ -22,13 +22,13 @@ from openai import OpenAI
 
 BASE_URL = "https://enrai.web.id/v1"
 DEFAULT_MODEL = "Chatgpt"
-DEFAULT_PROMPT = "Halo! Apa itu API yang kompatibel OpenAI?"
+DEFAULT_PROMPT = "Hello! What is an OpenAI-compatible API?"
 
 ERROR_HINTS = {
-    401: "API key tidak valid atau hilang. Periksa ENRAI_API_KEY.",
-    429: "Rate limit tercapai (20 request/menit, burst 5). Tunggu lalu ulangi.",
-    500: "Galat server. Ulangi setelah jeda; laporkan bila terus berulang.",
-    502: "Seluruh provider di balik combo sedang gagal. Ulangi beberapa saat lagi.",
+    401: "Invalid or missing API key. Check ENRAI_API_KEY.",
+    429: "Rate limit reached (20 requests/minute, burst 5). Wait and retry.",
+    500: "Server error. Retry after a pause; report it if it keeps happening.",
+    502: "Every provider behind the combo is failing. Retry in a moment.",
 }
 
 
@@ -37,16 +37,16 @@ def explain(exc: Exception) -> str:
     if isinstance(status, int) and status in ERROR_HINTS:
         return f"[{status}] {ERROR_HINTS[status]}"
     if isinstance(status, int):
-        return f"[{status}] Permintaan gagal: {exc}"
-    return f"Permintaan gagal: {exc}"
+        return f"[{status}] Request failed: {exc}"
+    return f"Request failed: {exc}"
 
 
 def main() -> int:
     api_key = os.environ.get("ENRAI_API_KEY")
     if not api_key:
         print(
-            "ENRAI_API_KEY belum di-set. Jalankan: export ENRAI_API_KEY='YOUR_API_KEY'\n"
-            "Belum punya key? Daftar gratis di https://enrai.web.id/register",
+            "ENRAI_API_KEY is not set. Run: export ENRAI_API_KEY='YOUR_API_KEY'\n"
+            "No key yet? Sign up free at https://enrai.web.id/register",
             file=sys.stderr,
         )
         return 2
@@ -73,13 +73,13 @@ def main() -> int:
                 if piece:
                     got_text = True
                     print(piece, end="", flush=True)
-        except Exception as exc:  # noqa: BLE001 - contoh: tampilkan apa adanya
+        except Exception as exc:  # noqa: BLE001 - example: show it as-is
             print(f"\n{explain(exc)}", file=sys.stderr)
             return 1
 
         print()
         if not got_text:
-            print("Stream selesai tanpa teks \u2014 perlakukan sebagai kegagalan.", file=sys.stderr)
+            print("Stream finished without text \u2014 treat it as a failure.", file=sys.stderr)
             return 1
         return 0
 
@@ -88,14 +88,14 @@ def main() -> int:
             model=model,
             messages=[{"role": "user", "content": prompt}],
         )
-    except Exception as exc:  # noqa: BLE001 - contoh: tampilkan apa adanya
+    except Exception as exc:  # noqa: BLE001 - example: show it as-is
         print(explain(exc), file=sys.stderr)
         return 1
 
     content = (response.choices[0].message.content or "").strip()
     if not content:
-        # 200 dengan isi kosong tetap dianggap gagal.
-        print("Jawaban kosong dari upstream \u2014 perlakukan sebagai kegagalan.", file=sys.stderr)
+        # A 200 with an empty body is still a failure.
+        print("Empty answer from upstream \u2014 treat it as a failure.", file=sys.stderr)
         return 1
 
     print(content)

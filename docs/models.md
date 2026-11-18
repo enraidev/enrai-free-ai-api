@@ -1,75 +1,88 @@
-# Daftar Model API AI Gratis Enrai (Chatgpt, Deepseek, GLM)
+# Free Enrai AI API Models (Chatgpt, Deepseek, GLM)
 
-**← Kembali ke [README](../README.md)** · [Getting started](getting-started.md) · [API reference](api-reference.md) · [Model](models.md) · [FAQ](faq.md)
+**← Back to [README](../README.md)** · [Getting started](getting-started.md) ·
+[API reference](api-reference.md) · [Models](models.md) · [FAQ](faq.md) ·
+[Bahasa Indonesia](id/models.md)
 
-Terakhir diperbarui: **17 November 2026** · Dokumentasi resmi: <https://enrai.web.id/docs> · Harga & limit: <https://enrai.web.id/pricing>
+Last updated: **17 November 2026** · Official documentation: <https://enrai.web.id/docs> ·
+Pricing & limits: <https://enrai.web.id/pricing>
 
-Halaman ini menjelaskan model apa saja yang bisa dipanggil lewat **API AI gratis** Enrai, bagaimana nama model bekerja, dan cara mengecek model yang sedang aktif sebelum aplikasi berjalan.
+This page explains which models you can call through the **free Enrai AI API**, how model names
+work, and how to check which models are live before your application starts.
 
-Base URL: `https://enrai.web.id/v1` · Dokumentasi resmi: <https://enrai.web.id/docs> · Status model live: <https://enrai.web.id/#model>
+Base URL: `https://enrai.web.id/v1` · Official documentation: <https://enrai.web.id/docs> · Live
+model status: <https://enrai.web.id/#model>
 
-## Daftar model (per 17 November 2026)
+## Model list (as of 17 November 2026)
 
-| Model | Kapabilitas | Streaming | Status |
+| Model | Capability | Streaming | Status |
 |---|---|---|---|
-| `Chatgpt` | Chat completion | Ya | Online |
-| `Deepseek` | Chat completion | Ya | Online |
-| `GLM` | Chat completion | Ya | Online |
+| `Chatgpt` | Chat completion | Yes | Online |
+| `Deepseek` | Chat completion | Yes | Online |
+| `GLM` | Chat completion | Yes | Online |
 
-Daftar ini diambil dari beranda `enrai.web.id`. Daftar otoritatif selalu `GET https://enrai.web.id/v1/models`.
+This list is taken from the `enrai.web.id` home page. The authoritative list is always
+`GET https://enrai.web.id/v1/models`.
 
-## Nama model adalah alias, bukan nama vendor
+## Model names are aliases, not vendor names
 
-`Chatgpt`, `Deepseek`, dan `GLM` adalah **alias combo**: satu nama bisa dilayani beberapa provider di belakangnya. Provider dikelola otomatis, sehingga:
+`Chatgpt`, `Deepseek` and `GLM` are **combo aliases**: one name can be served by several providers
+behind it. Providers are managed automatically, so:
 
-- string model di kode Anda tidak perlu berubah saat provider berganti;
-- jika satu provider gagal atau mengembalikan jawaban kosong, permintaan diulang ke anggota combo lain;
-- kalau semua anggota gagal, API membalas `502` — bukan jawaban kosong dengan status `200`.
+- the model string in your code does not have to change when a provider changes;
+- if one provider fails or returns an empty answer, the request is retried against another member
+  of the combo;
+- if every member fails, the API answers `502` — not an empty answer with status `200`.
 
-Karena itu, jangan menyamakan `Chatgpt` dengan versi model tertentu dari vendor mana pun. Perlakukan sebagai nama layanan.
+Because of that, do not equate `Chatgpt` with a specific vendor model version. Treat it as a
+service name.
 
-## Cara mengecek model yang aktif
+## How to check which models are live
 
 ```bash
 curl https://enrai.web.id/v1/models \
   -H "Authorization: Bearer YOUR_API_KEY"
 ```
 
-Praktik yang disarankan:
+Recommended practice:
 
-1. Panggil saat aplikasi start, simpan hasilnya di cache/memori.
-2. Refresh berkala (mis. sekali per jam), jangan per request — limit endpoint ini 60 request/menit per key.
-3. Jika model yang Anda pakai hilang dari daftar, fallback ke model lain yang tersedia dan log peringatan.
+1. Call it when the application starts and keep the result in a cache or in memory.
+2. Refresh periodically (for example once an hour), not per request — this endpoint is limited to
+   60 requests per minute per key.
+3. If a model you use disappears from the list, fall back to another available model and log a
+   warning.
 
-## Kapabilitas
+## Capabilities
 
-| Kapabilitas | Status |
+| Capability | Status |
 |---|---|
-| Chat completion | Tersedia untuk ketiga model |
-| Streaming (SSE) | Tersedia |
-| Daftar model dinamis | Tersedia (`GET /v1/models`) |
-| Context window per model | Belum dipublikasikan |
-| Batas token output per model | Belum dipublikasikan |
-| Vision / image input | Belum dipublikasikan |
-| Function calling / tools | Belum dipublikasikan |
+| Chat completion | Available for all three models |
+| Streaming (SSE) | Available |
+| Dynamic model list | Available (`GET /v1/models`) |
+| Context window per model | Not published |
+| Output token limit per model | Not published |
+| Vision / image input | Not published |
+| Function calling / tools | Not published |
 
-Jangan mengandalkan kemampuan yang belum tercantum di <https://enrai.web.id/docs>.
+Do not rely on capabilities that are not listed at <https://enrai.web.id/docs>.
 
-## Memilih model
+## Choosing a model
 
-- **`Chatgpt`** — pilihan default untuk percakapan umum; dipakai di seluruh contoh dokumentasi ini.
-- **`Deepseek`** — alternatif untuk tugas teks/penalaran; cocok dibandingkan langsung dengan model lain karena format request identik.
-- **`GLM`** — alternatif ketiga; berguna saat ingin membandingkan gaya jawaban tanpa mengubah kode.
+- **`Chatgpt`** — the default choice for general conversation; used throughout this documentation.
+- **`Deepseek`** — an alternative for text/reasoning tasks; easy to compare directly with another
+  model because the request format is identical.
+- **`GLM`** — the third alternative; useful when comparing answer styles without changing code.
 
-Karena ketiganya memakai format request yang sama, mengganti model cukup mengganti satu string:
+Because all three use the same request format, switching models means changing one string:
 
 ```python
 response = client.chat.completions.create(
-    model="Deepseek",  # sebelumnya "Chatgpt"
-    messages=[{"role": "user", "content": "Halo"}],
+    model="Deepseek",  # previously "Chatgpt"
+    messages=[{"role": "user", "content": "Hello"}],
 )
 ```
 
 ---
 
-Kembali ke [README](../README.md) · [Getting started](getting-started.md) · [API reference](api-reference.md) · [FAQ](faq.md)
+Back to [README](../README.md) · [Getting started](getting-started.md) ·
+[API reference](api-reference.md) · [FAQ](faq.md)

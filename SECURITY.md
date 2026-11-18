@@ -1,31 +1,50 @@
-# Kebijakan Keamanan (Security Policy)
+# Security Policy
 
-Repo ini berisi **dokumentasi dan contoh kode** untuk API di <https://enrai.web.id>. Tidak ada kode server produksi di sini.
+This repository contains **documentation and code examples** for the API at <https://enrai.web.id>.
+There is no production server code here.
 
-## Melaporkan kerentanan
+## Reporting a vulnerability
 
-**Jangan** membuka issue publik untuk masalah keamanan.
+**Do not** open a public issue for a security problem.
 
-1. **Cara utama — GitHub Security Advisories:** buka tab **Security** repo ini → **Report a vulnerability**. Laporan bersifat privat dan hanya terlihat oleh maintainer.
-2. **Alternatif — email:** kirim ke **enraigaming@yahoo.com** dengan subjek `[SECURITY] enrai-free-ai-api`.
+1. **Primary channel — GitHub Security Advisories:** open the repo's **Security** tab → **Report a
+   vulnerability**. The report stays private and is visible only to maintainers.
+2. **Alternative — email:** send it to **enraigaming@yahoo.com** with the subject
+   `[SECURITY] enrai-free-ai-api`.
 
-Sertakan bila ada: deskripsi masalah, langkah reproduksi, dampak yang Anda perkirakan, dan versi/contoh kode yang terdampak.
+Include, when available: a description of the problem, reproduction steps, the impact you expect,
+and the version or example affected.
 
-## Yang termasuk lingkup
+## In scope
 
-- Kebocoran API key atau data pribadi di dalam repo ini (file, commit, issue, atau PR).
-- Contoh kode di `examples/` yang bisa menimbulkan risiko jika disalin apa adanya (mis. mencetak key ke log).
-- Tautan yang mengarahkan pengguna ke domain tiruan.
+- API key or personal data leaks inside this repository (files, commits, issues or PRs).
+- Example code in `examples/` that creates a risk when copied as-is (for example, printing a key to
+  a log).
+- Links that send users to an impersonating domain.
 
-## Di luar lingkup
+## Out of scope
 
-- Masalah pada layanan API di `enrai.web.id`, akun, kuota, atau tagihan — laporkan lewat kontak resmi di situs.
-- Hasil model (jawaban yang tidak akurat) — itu bukan kerentanan keamanan.
+- Problems with the API service at `enrai.web.id`, accounts, quotas or billing — report those
+  through the official contact on the site.
+- Model output (inaccurate answers) — that is not a security vulnerability.
 
-## Waktu respons
+## Response time
 
-Laporan diproses sebaik mungkin dalam beberapa hari kerja. Kami akan mengonfirmasi penerimaan, menjelaskan hasil penilaian, dan memberi tahu saat perbaikan dirilis.
+Reports are handled as well as possible within a few business days. We will confirm receipt, explain
+the assessment, and let you know when a fix ships.
 
-## Versi yang didukung
+## Supported versions
 
-Hanya isi terbaru di branch `main` yang didukung.
+Only the latest content on the `main` branch is supported.
+
+## Bahasa Indonesia
+
+Repo ini berisi **dokumentasi dan contoh kode**; tidak ada kode server produksi di sini. **Jangan**
+membuka issue publik untuk masalah keamanan.
+
+- Cara utama: tab **Security** di repo ini → **Report a vulnerability** (privat).
+- Alternatif: email ke **enraigaming@yahoo.com** dengan subjek `[SECURITY] enrai-free-ai-api`.
+
+Lingkup: kebocoran API key/data pribadi di repo ini, contoh kode yang berisiko jika disalin
+apa adanya, dan tautan ke domain tiruan. Masalah layanan `enrai.web.id` (akun, kuota, tagihan) bukan
+lingkup repo ini — gunakan kontak resmi di situs.

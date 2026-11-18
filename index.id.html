@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enrai — API AI Gratis Kompatibel OpenAI untuk Developer</title>
+<meta name="description" content="API AI gratis tanpa kartu kredit: endpoint kompatibel OpenAI, streaming SSE, tiga model siap pakai. Daftar gratis, request pertama dalam tiga langkah.">
+<link rel="canonical" href="https://enraidev.github.io/enrai-free-ai-api/index.id.html">
+<link rel="alternate" hreflang="en" href="https://enraidev.github.io/enrai-free-ai-api/">
+<link rel="alternate" hreflang="id" href="https://enraidev.github.io/enrai-free-ai-api/index.id.html">
+<link rel="alternate" hreflang="x-default" href="https://enraidev.github.io/enrai-free-ai-api/">
+<meta name="theme-color" content="#4f46e5">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Enrai Dev">
+
+<meta property="og:site_name" content="Enrai Dev">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="id_ID">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="Enrai — API AI Gratis Kompatibel OpenAI">
+<meta property="og:description" content="Satu API key, banyak model, format OpenAI. Streaming SSE, public beta, tanpa kartu kredit. Base URL https://enrai.web.id/v1.">
+<meta property="og:url" content="https://enraidev.github.io/enrai-free-ai-api/index.id.html">
+<meta property="og:image" content="https://enraidev.github.io/enrai-free-ai-api/assets/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Enrai — API AI gratis kompatibel OpenAI dengan base URL https://enrai.web.id/v1 dan tiga model: Chatgpt, Deepseek, GLM.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Enrai — API AI Gratis Kompatibel OpenAI">
+<meta name="twitter:description" content="Satu API key, banyak model, format OpenAI, streaming SSE, tanpa kartu kredit.">
+<meta name="twitter:image" content="https://enraidev.github.io/enrai-free-ai-api/assets/social-preview.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Enrai",
+  "alternateName": "Enrai Dev",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "url": "https://enrai.web.id/",
+  "description": "API AI gratis yang kompatibel dengan OpenAI SDK: satu API key untuk setiap model yang tersedia, dengan streaming SSE dan failover provider otomatis.",
+  "inLanguage": "id",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Tier gratis selama public beta, tanpa kartu kredit."
+  },
+  "featureList": [
+    "Endpoint POST /v1/chat/completions yang kompatibel OpenAI",
+    "GET /v1/models untuk melihat model yang aktif",
+    "Streaming Server-Sent Events",
+    "Satu API key untuk setiap model yang tersedia",
+    "Tanpa kartu kredit"
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --bg:#0a0a0d; --panel:#12121a; --panel-2:#171722; --stroke:#26263a;
+    --fg:#f4f4f7; --muted:#a1a1b3; --accent:#6366f1; --accent-soft:#4f46e5;
+    --ok:#34d399; --warn:#fbbf24;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+    line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:var(--fg);text-decoration:none}
+  a:hover{color:#c7c7ff}
+  h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:20;background:rgba(10,10,13,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--stroke)}
+  .nav{display:flex;align-items:center;gap:24px;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)}
+  .nav nav{display:flex;gap:22px;margin-left:auto;font-size:14px;color:var(--muted)}
+  .nav nav a:hover{color:var(--fg)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;
+    background:var(--accent-soft);color:#fff;border:1px solid transparent;
+    transition:transform .12s ease, background .12s ease;
+  }
+  .btn:hover{background:#4338ca;color:#fff;transform:translateY(-1px)}
+  .btn.ghost{background:transparent;border-color:var(--stroke);color:var(--fg)}
+  .btn.ghost:hover{background:var(--panel-2);border-color:#3a3a52}
+
+  /* hero */
+  .hero{padding:72px 0 40px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);border:1px solid var(--stroke);
+    padding:5px 12px;border-radius:999px;margin-bottom:22px
+  }
+  .pill i{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block}
+  h1{font-size:clamp(32px,4.6vw,54px);font-weight:800}
+  h1 em{font-style:normal;color:#a5b4fc}
+  .lead{color:var(--muted);font-size:17px;max-width:46ch;margin:18px 0 26px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  .checks{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;font-size:13px;color:var(--muted)}
+  .checks span::before{content:"✓";color:var(--ok);margin-right:7px;font-weight:700}
+
+  /* code card */
+  .card{background:var(--panel);border:1px solid var(--stroke);border-radius:16px;overflow:hidden}
+  .tabs{display:flex;gap:4px;padding:10px 10px 0;border-bottom:1px solid var(--stroke);background:var(--panel-2)}
+  .tab{
+    appearance:none;background:transparent;border:0;color:var(--muted);font-family:var(--mono);
+    font-size:12.5px;padding:8px 12px;border-radius:8px 8px 0 0;cursor:pointer
+  }
+  .tab[aria-selected="true"]{color:var(--fg);background:var(--panel);box-shadow:inset 0 -2px 0 var(--accent)}
+  pre{margin:0;padding:18px;overflow:auto;font-family:var(--mono);font-size:12.8px;line-height:1.7;color:#d6d6e7}
+  pre .k{color:#a5b4fc}
+  pre .s{color:#86efac}
+  pre .c{color:#6b6b85}
+  [role="tabpanel"]{display:none}
+  [role="tabpanel"].on{display:block}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:26px 0 8px}
+  .stat{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:18px}
+  .stat b{display:block;font-size:22px;letter-spacing:-.02em}
+  .stat span{font-size:12.5px;color:var(--muted)}
+
+  section{padding:64px 0;border-top:1px solid var(--stroke)}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8b8ba7;margin-bottom:12px}
+  h2{font-size:clamp(24px,3vw,34px);font-weight:750}
+  .sub{color:var(--muted);margin:12px 0 34px;max-width:60ch}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .feat{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:22px}
+  .feat h3{font-size:15.5px;margin-bottom:8px}
+  .feat p{margin:0;font-size:14px;color:var(--muted)}
+  .feat .ico{font-size:18px;margin-bottom:12px;color:#a5b4fc}
+
+  table{width:100%;border-collapse:collapse;font-size:14px;background:var(--panel);border:1px solid var(--stroke);border-radius:14px;overflow:hidden}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--stroke)}
+  th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#8b8ba7;background:var(--panel-2)}
+  tr:last-child td{border-bottom:0}
+  code.inline{font-family:var(--mono);font-size:12.5px;background:var(--panel-2);border:1px solid var(--stroke);padding:2px 6px;border-radius:6px;color:#c7c7ff}
+  .ok{color:var(--ok);font-weight:600}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+  .step{background:var(--panel);border:1px solid var(--stroke);border-radius:14px;padding:22px;position:relative}
+  .step::before{
+    counter-increment:s;content:counter(s);position:absolute;top:-13px;left:20px;
+    width:26px;height:26px;border-radius:8px;background:var(--accent-soft);color:#fff;
+    display:grid;place-items:center;font-size:13px;font-weight:700
+  }
+  .step h3{font-size:15px;margin:10px 0 6px}
+  .step p{margin:0;font-size:14px;color:var(--muted)}
+
+  details{border:1px solid var(--stroke);border-radius:12px;padding:16px 18px;background:var(--panel);margin-bottom:10px}
+  summary{cursor:pointer;font-weight:600;font-size:15px}
+  details p{margin:12px 0 0;color:var(--muted);font-size:14.5px}
+
+  .banner{
+    background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(99,102,241,.04));
+    border:1px solid #35356b;border-radius:18px;padding:40px;
+    display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap
+  }
+  .banner h2{font-size:clamp(22px,2.6vw,30px)}
+  .banner p{color:var(--muted);margin:10px 0 0;max-width:52ch}
+
+  footer{border-top:1px solid var(--stroke);padding:36px 0;color:var(--muted);font-size:13.5px}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  .foot nav{display:flex;gap:18px;flex-wrap:wrap}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;padding-top:48px;gap:32px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .grid,.steps{grid-template-columns:1fr}
+    .nav nav{display:none}
+    .banner{padding:28px}
+  }
+</style>
+</head>
+<body id="main">
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#main"><span class="dot"></span>Enrai Dev</a>
+    <nav>
+      <a href="#fitur">Fitur</a>
+      <a href="#model">Model</a>
+      <a href="#mulai">Mulai cepat</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://enrai.web.id/docs">Dokumentasi</a>
+      <a href="index.html" hreflang="en" lang="en">English</a>
+    </nav>
+    <a class="btn" href="https://enrai.web.id/register">Daftar gratis</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <span class="pill"><i></i>Public beta · tier gratis</span>
+        <h1>API AI gratis yang bicara <em>OpenAI</em>.</h1>
+        <p class="lead">
+          Satu API key, beberapa model, satu base URL. Arahkan SDK OpenAI yang sudah Anda pakai ke
+          <code class="inline">https://enrai.web.id/v1</code> dan biarkan kode Anda apa adanya.
+        </p>
+        <div class="cta">
+          <a class="btn" href="https://enrai.web.id/register">Daftar gratis →</a>
+          <a class="btn ghost" href="https://enrai.web.id/docs">Baca dokumentasi</a>
+        </div>
+        <div class="checks">
+          <span>Tanpa kartu kredit</span>
+          <span>Tiga langkah untuk mulai</span>
+          <span>Streaming SSE</span>
+          <span>Kompatibel SDK OpenAI</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true"  aria-controls="p-curl"   data-p="p-curl">curl</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="p-node"   data-p="p-node">node</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="p-python" data-p="p-python">python</button>
+        </div>
+        <div id="p-curl" role="tabpanel" class="on"><pre><span class="c"># request pertama</span>
+curl https://enrai.web.id/v1/chat/completions \
+  -H <span class="s">"Authorization: Bearer YOUR_API_KEY"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{
+    "model": "Chatgpt",
+    "messages": [{"role": "user", "content": "Halo!"}]
+  }'</span></pre></div>
+        <div id="p-node" role="tabpanel"><pre><span class="c">// npm install openai</span>
+<span class="k">import</span> OpenAI <span class="k">from</span> <span class="s">"openai"</span>;
+
+<span class="k">const</span> client = <span class="k">new</span> OpenAI({
+  baseURL: <span class="s">"https://enrai.web.id/v1"</span>,
+  apiKey: process.env.ENRAI_API_KEY,
+});
+
+<span class="k">const</span> res = <span class="k">await</span> client.chat.completions.create({
+  model: <span class="s">"Chatgpt"</span>,
+  messages: [{ role: <span class="s">"user"</span>, content: <span class="s">"Halo!"</span> }],
+});
+console.log(res.choices[0].message.content);</pre></div>
+        <div id="p-python" role="tabpanel"><pre><span class="c"># pip install openai</span>
+<span class="k">import</span> os
+<span class="k">from</span> openai <span class="k">import</span> OpenAI
+
+client = OpenAI(
+    base_url=<span class="s">"https://enrai.web.id/v1"</span>,
+    api_key=os.environ[<span class="s">"ENRAI_API_KEY"</span>],
+)
+res = client.chat.completions.create(
+    model=<span class="s">"Chatgpt"</span>,
+    messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: <span class="s">"Halo!"</span>}],
+)
+<span class="k">print</span>(res.choices[0].message.content)</pre></div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>3</b><span>Model siap pakai</span></div>
+      <div class="stat"><b>20/menit</b><span>Batas chat per key</span></div>
+      <div class="stat"><b>1</b><span>Key untuk semua model</span></div>
+      <div class="stat"><b>$0</b><span>Biaya saat mulai</span></div>
+    </div>
+  </div>
+
+  <section id="fitur">
+    <div class="wrap">
+      <div class="eyebrow">Kenapa Enrai</div>
+      <h2>Dibuat untuk yang sedang membangun.</h2>
+      <p class="sub">Lapisan tipis di depan beberapa provider model. Anda tetap memakai SDK, prompt, dan kode yang sudah ada — Enrai yang mengurus perutean.</p>
+      <div class="grid">
+        <div class="feat">
+          <div class="ico" aria-hidden="true">⌁</div>
+          <h3>Endpoint kompatibel OpenAI</h3>
+          <p><code class="inline">POST /v1/chat/completions</code> dan <code class="inline">GET /v1/models</code> mengikuti bentuk OpenAI, jadi SDK dan tools yang sudah ada bekerja hanya dengan mengganti base URL.</p>
+        </div>
+        <div class="feat">
+          <div class="ico" aria-hidden="true">⇉</div>
+          <h3>Failover provider otomatis</h3>
+          <p>Setiap nama model adalah combo yang dikelola server. Bila satu provider gagal, permintaan dialihkan ke anggota combo lain alih-alih mengembalikan jawaban kosong.</p>
+        </div>
+        <div class="feat">
+          <div class="ico" aria-hidden="true">≡</div>
+          <h3>Streaming SSE</h3>
+          <p>Kirim <code class="inline">"stream": true</code> dan baca potongan jawaban secara real-time dalam format chunk OpenAI, diakhiri <code class="inline">[DONE]</code>.</p>
+        </div>
+        <div class="feat">
+          <div class="ico" aria-hidden="true">◎</div>
+          <h3>Satu key, banyak model</h3>
+          <p>Tanpa akun per provider. Satu key dari dashboard membuka semua model yang tersedia, dan <code class="inline">/v1/models</code> menunjukkan apa yang aktif saat ini.</p>
+        </div>
+        <div class="feat">
+          <div class="ico" aria-hidden="true">⏱</div>
+          <h3>Limit yang dipublikasikan</h3>
+          <p>20 request chat per menit (burst 5) dan 60 request daftar model per menit, per key. Angkanya tertulis di depan, bukan muncul sebagai 429 misterius.</p>
+        </div>
+        <div class="feat">
+          <div class="ico" aria-hidden="true">⌘</div>
+          <h3>Masuk ke stack Anda</h3>
+          <p>curl, Node.js, Python, PHP, atau klien apa pun yang bicara format OpenAI — termasuk editor dan tools yang mengizinkan base URL kustom.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="model">
+    <div class="wrap">
+      <div class="eyebrow">Model</div>
+      <h2>Tiga model, satu format request.</h2>
+      <p class="sub">Nama model adalah alias stabil. Provider di balik setiap combo dikelola otomatis, sehingga request yang sama tetap bekerja saat satu upstream bermasalah.</p>
+      <table>
+        <thead><tr><th>Model</th><th>Kapabilitas</th><th>Streaming</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inline">Chatgpt</code></td><td>Chat completion</td><td>Ya</td><td class="ok">Online</td></tr>
+          <tr><td><code class="inline">Deepseek</code></td><td>Chat completion</td><td>Ya</td><td class="ok">Online</td></tr>
+          <tr><td><code class="inline">GLM</code></td><td>Chat completion</td><td>Ya</td><td class="ok">Online</td></tr>
+        </tbody>
+      </table>
+      <p class="sub" style="margin:18px 0 0">Selalu baca <code class="inline">GET https://enrai.web.id/v1/models</code> saat aplikasi start lalu cache hasilnya — jangan memanggilnya di setiap request.</p>
+    </div>
+  </section>
+
+  <section id="mulai">
+    <div class="wrap">
+      <div class="eyebrow">Mulai cepat</div>
+      <h2>Tiga langkah dari nol ke jawaban pertama.</h2>
+      <p class="sub">Tanpa build step, tanpa formulir pembayaran, tanpa daftar tunggu.</p>
+      <div class="steps">
+        <div class="step"><h3>Buat akun</h3><p><a href="https://enrai.web.id/register">Daftar</a> dengan alamat email. Tidak perlu kartu.</p></div>
+        <div class="step"><h3>Buat API key</h3><p>Buka Dashboard → API Keys. Key ditampilkan sekali — simpan di environment variable.</p></div>
+        <div class="step"><h3>Panggil endpoint</h3><p>Kirim request pertama ke <code class="inline">/v1/chat/completions</code> dengan SDK OpenAI.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="eyebrow">FAQ</div>
+      <h2>Pertanyaan yang benar-benar ditanyakan.</h2>
+      <p class="sub"></p>
+      <details><summary>Apakah benar-benar gratis?</summary><p>Ya. Selama <strong>public beta</strong> tersedia tier gratis tanpa kartu kredit: satu key, semua model yang tersedia, dengan limit yang dipublikasikan di <a href="https://enrai.web.id/pricing">halaman harga</a>.</p></details>
+      <details><summary>Apakah aplikasi saya harus ditulis ulang?</summary><p>Tidak. Kalau Anda sudah memakai SDK OpenAI atau klien kompatibel OpenAI, cukup ganti base URL menjadi <code class="inline">https://enrai.web.id/v1</code> dan API key. Bentuk request, payload, dan response tetap sama.</p></details>
+      <details><summary>Apa yang terjadi kalau provider sedang down?</summary><p>Setiap nama model adalah combo beberapa provider. Permintaan yang gagal diulang ke anggota combo lain. Bila semua percobaan kosong, Anda menerima <code class="inline">502</code> dengan pesan error, bukan jawaban kosong.</p></details>
+      <details><summary>Apakah streaming didukung?</summary><p>Ya — <code class="inline">"stream": true</code> mengembalikan Server-Sent Events dalam format chunk OpenAI, diakhiri <code class="inline">[DONE]</code>.</p></details>
+      <details><summary>Bagaimana dengan data saya?</summary><p>Prompt diteruskan ke provider upstream yang melayani request tersebut; lihat <a href="https://enrai.web.id/privacy-policy">kebijakan privasi</a> dan <a href="https://enrai.web.id/terms-and-conditions">ketentuan layanan</a>. Jangan kirim rahasia yang tidak akan Anda kirim ke API pihak ketiga.</p></details>
+      <details><summary>Apakah siap untuk produksi?</summary><p>Statusnya <strong>public beta</strong>. Cocok untuk prototipe, proyek sampingan, dan tools internal — siapkan provider kedua untuk apa pun yang tidak boleh gagal.</p></details>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="banner">
+        <div>
+          <h2>Ambil key, kirim satu request.</h2>
+          <p>Gratis selama public beta. Kalau request pertama mengembalikan teks, bagian tersulit sudah lewat.</p>
+        </div>
+        <a class="btn" href="https://enrai.web.id/register">Mulai membangun →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 Enrai Dev · Public beta · <a href="https://enrai.web.id">enrai.web.id</a></div>
+    <nav>
+      <a href="https://enrai.web.id/docs">Dokumentasi</a>
+      <a href="https://enrai.web.id/pricing">Harga</a>
+      <a href="https://enrai.web.id/blog">Blog</a>
+      <a href="https://enrai.web.id/privacy-policy">Privasi</a>
+      <a href="https://enrai.web.id/terms-and-conditions">Ketentuan</a>
+      <a href="https://github.com/enraidev/enrai-free-ai-api">GitHub</a>
+      <a href="index.html" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach(function (t) {
+        t.setAttribute('aria-selected', String(t === tab));
+        document.getElementById(t.dataset.p).classList.toggle('on', t === tab);
+      });
+    });
+  });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Apakah benar-benar gratis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ya. Selama public beta tersedia tier gratis tanpa kartu kredit: satu API key, semua model yang tersedia, dengan limit yang dipublikasikan di https://enrai.web.id/pricing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apakah aplikasi saya harus ditulis ulang?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tidak. Kalau aplikasi sudah memakai SDK OpenAI atau klien kompatibel OpenAI, cukup ganti base URL menjadi https://enrai.web.id/v1 dan API key. Bentuk request, payload, dan response tetap sama."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apa yang terjadi kalau provider sedang down?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Setiap nama model adalah combo beberapa provider. Permintaan yang gagal diulang ke anggota combo lain. Bila semua percobaan kosong, API membalas 502 dengan pesan error, bukan jawaban kosong."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apakah streaming didukung?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ya, kirim \"stream\": true untuk menerima Server-Sent Events dalam format chunk OpenAI, diakhiri [DONE]."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bagaimana dengan data saya?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Prompt diteruskan ke provider upstream yang melayani request tersebut. Rincian ada di https://enrai.web.id/privacy-policy dan https://enrai.web.id/terms-and-conditions. Jangan kirim rahasia yang tidak akan Anda kirim ke API pihak ketiga."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apakah siap untuk produksi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Statusnya public beta: cocok untuk prototipe, proyek sampingan, dan tools internal. Siapkan provider kedua untuk apa pun yang tidak boleh gagal."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>

@@ -1,33 +1,34 @@
-# Ringkasan
+# Summary
 
-<!-- Satu atau dua kalimat: apa yang berubah dan mengapa. -->
+<!-- One or two sentences: what changes and why. -->
 
-## Jenis perubahan
+## Type of change
 
-- [ ] Dokumentasi (docs)
-- [ ] Contoh kode (examples)
-- [ ] CI/otomasi
-- [ ] Lainnya:
+- [ ] Documentation (docs)
+- [ ] Code example (examples)
+- [ ] CI/automation
+- [ ] Other:
 
-## Sumber fakta
+## Source of the facts
 
-<!-- Untuk perubahan yang menyangkut model, limit, endpoint, atau harga: sertakan tautan ke halaman situs yang mendukungnya. -->
-<!-- Kalau informasinya belum ada di situs, tulis "Belum dipublikasikan" dan jelaskan. -->
+<!-- For changes about models, limits, endpoints or pricing: link the site page that backs it up. -->
+<!-- If the information is not on the site yet, write "Not published" and explain. -->
 
 ## Checklist
 
-- [ ] Tidak ada API key, token, atau file `.env` di commit ini
-- [ ] Tidak ada alamat loopback atau nomor port; alamat situs hanya `https://enrai.web.id`
-- [ ] Semua tautan (internal dan eksternal) sudah dibuka dan tidak ada 404
-- [ ] Contoh kode/alasannya dijalankan dan hasilnya saya lampirkan di bawah
-- [ ] Base URL, nama model, dan angka limit konsisten dengan file lain di repo
+- [ ] No API key, token or `.env` file in this commit
+- [ ] No loopback address or port number; the only site address is `https://enrai.web.id`
+- [ ] Every link (internal and external) was opened and none returns 404
+- [ ] Code examples were run and the output is attached below
+- [ ] Base URL, model names and limit numbers are consistent with the other files in the repo
+- [ ] English file and its Indonesian counterpart (`docs/id/`) were updated together
 
-## Cara menguji
+## How to test
 
 ```bash
-# perintah yang dipakai untuk memverifikasi perubahan ini
+# command used to verify this change
 ```
 
-## Catatan tambahan
+## Additional notes
 
-<!-- Opsional: tindak lanjut, pertanyaan untuk reviewer. -->
+<!-- Optional: follow-ups, questions for the reviewer. -->

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
-  <title id="title">Enrai — API AI gratis yang kompatibel OpenAI</title>
-  <desc id="desc">Banner gelap dengan tulisan Enrai, tagline "API AI gratis, kompatibel OpenAI", dan alamat enrai.web.id.</desc>
+  <title id="title">Enrai — free AI API compatible with OpenAI</title>
+  <desc id="desc">Dark banner reading Enrai, the tagline "Free AI API, OpenAI-compatible", and the address enrai.web.id.</desc>
 
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -28,8 +28,8 @@
   </g>
 
   <text x="168" y="132" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#f4f4f7" letter-spacing="-1">Enrai</text>
-  <text x="170" y="176" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#a5b4fc">API AI gratis · kompatibel OpenAI · streaming SSE</text>
-  <text x="170" y="216" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#8b8ba7">Chatgpt · Deepseek · GLM — satu API key</text>
+  <text x="170" y="176" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#a5b4fc">Free AI API · OpenAI-compatible · SSE streaming</text>
+  <text x="170" y="216" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#8b8ba7">Chatgpt · Deepseek · GLM — one API key</text>
 
   <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" fill="#c7c7ff">
     <rect x="812" y="120" width="316" height="60" rx="14" fill="#12121a" stroke="#2b2b45"/>

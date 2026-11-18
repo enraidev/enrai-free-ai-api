@@ -1,61 +1,66 @@
-# Contoh Kode API AI Gratis Enrai (Python, Node.js, cURL)
+# Enrai Free AI API Code Examples (Python, Node.js, cURL)
 
-Contoh yang bisa langsung dijalankan untuk memanggil **API AI gratis** Enrai, endpoint **kompatibel OpenAI** di `https://enrai.web.id/v1`.
+Ready-to-run examples that call the **free Enrai AI API**, an **OpenAI-compatible** endpoint at
+`https://enrai.web.id/v1`.
 
-Semua contoh membaca API key dari environment variable `ENRAI_API_KEY` dan menolak jalan tanpa key — tidak ada key asli di repo ini.
+Every example reads the API key from the `ENRAI_API_KEY` environment variable and refuses to run
+without one — there is no real key in this repository.
 
 ```bash
 export ENRAI_API_KEY="YOUR_API_KEY"
 ```
 
-Daftar akun gratis: <https://enrai.web.id/register> · Dokumentasi: <https://enrai.web.id/docs>
+Free sign-up: <https://enrai.web.id/register> · Documentation: <https://enrai.web.id/docs>
 
-## Folder
+## Folders
 
-| Folder | Isi |
+| Folder | Contents |
 |---|---|
-| [`python/`](python/chat.py) | `chat.py` (chat completion), `stream.py` (streaming SSE), `requirements.txt` |
-| [`nodejs/`](nodejs/chat.mjs) | `chat.mjs` (chat + streaming, tanpa dependency), `package.json` |
+| [`python/`](python/chat.py) | `chat.py` (chat completion), `stream.py` (SSE streaming), `requirements.txt` |
+| [`nodejs/`](nodejs/chat.mjs) | `chat.mjs` (chat + streaming, no dependencies), `package.json` |
 | [`curl/`](curl/chat.sh) | `models.sh`, `chat.sh`, `stream.sh` |
-| [`openai-sdk/`](openai-sdk/README.md) | Contoh paket resmi `openai` untuk Python dan Node.js |
+| [`openai-sdk/`](openai-sdk/README.md) | Examples using the official `openai` package for Python and Node.js |
 
-Model default di semua contoh: `Chatgpt`. Ganti dengan `Deepseek` atau `GLM` (lihat [../docs/models.md](../docs/models.md)).
+The default model in every example is `Chatgpt`. Switch to `Deepseek` or `GLM` (see
+[`../docs/models.md`](../docs/models.md)).
 
 ## Python
 
 ```bash
 cd python
 pip install -r requirements.txt
-python chat.py "Jelaskan API kompatibel OpenAI dalam satu paragraf."
-python stream.py "Tulis puisi pendek tentang API."
+python chat.py "Explain an OpenAI-compatible API in one paragraph."
+python stream.py "Write a short poem about APIs."
 ```
 
 ## Node.js
 
-Contoh memakai `fetch` bawaan (Node.js 18+), **tanpa dependency**:
+The example uses the built-in `fetch` (Node.js 18+), **no dependencies**:
 
 ```bash
 cd nodejs
-node chat.mjs "Jelaskan API kompatibel OpenAI dalam satu paragraf."
-node chat.mjs --stream "Hitung 1 sampai 10."
+node chat.mjs "Explain an OpenAI-compatible API in one paragraph."
+node chat.mjs --stream "Count from 1 to 10."
 ```
 
-Kalau lebih suka SDK resmi `openai`, polanya sama seperti contoh Python: ganti `baseURL` menjadi `https://enrai.web.id/v1`.
+If you prefer the official `openai` SDK, the pattern is the same as the Python example: point
+`baseURL` at `https://enrai.web.id/v1`.
 
 ## cURL
 
 ```bash
 cd curl
 ./models.sh
-./chat.sh "Halo dari cURL!"
-./stream.sh "Hitung 1 sampai 10."
+./chat.sh "Hello from cURL!"
+./stream.sh "Count from 1 to 10."
 ```
 
-## Penanganan error yang dipakai contoh
+## Error handling used by the examples
 
-- `401` — key salah/hilang: periksa `ENRAI_API_KEY`.
-- `429` — rate limit (20 request/menit, burst 5): contoh menampilkan pesan dan saran backoff.
-- `502` — upstream gagal setelah failover: ulangi setelah jeda.
-- Balasan kosong — diperlakukan sebagai kegagalan, bukan sukses.
+- `401` — wrong/missing key: check `ENRAI_API_KEY`.
+- `429` — rate limit (20 requests/minute, burst 5): the examples print a message and suggest
+  backoff.
+- `502` — upstream failed after failover: retry later.
+- Empty reply — treated as a failure, not a success.
 
-Referensi lengkap: [../docs/api-reference.md](../docs/api-reference.md).
+Full reference: [`../docs/api-reference.md`](../docs/api-reference.md).

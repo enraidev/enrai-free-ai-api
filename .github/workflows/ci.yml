@@ -27,8 +27,8 @@ jobs:
       - name: Lychee
         uses: lycheeverse/lychee-action@v2
         with:
-          # 401/403/429 diterima: endpoint /v1/* butuh API key dan beberapa host
-          # membatasi permintaan otomatis. Tautan mati (404/410) tetap gagal.
+          # 401/403/429 are accepted: /v1/* endpoints require an API key and some
+          # hosts rate-limit automated requests. Dead links (404/410) still fail.
           args: >-
             --no-progress
             --max-retries 3
@@ -70,10 +70,10 @@ jobs:
 
       - name: Forbidden URL guard
         run: |
-          # Pola dipisah agar file workflow ini tidak mencocokkan dirinya sendiri.
+          # The pattern is split so this workflow file doesn't match itself.
           PAT="local""host|127\.0\.0\.1"
           if grep -rniE "$PAT" . --exclude-dir=.git --exclude-dir=node_modules; then
-            echo "::error::Ditemukan alamat loopback (URL lokal) di repo"
+            echo "::error::Loopback address (local URL) found in the repo"
             exit 1
           fi
-          echo "Bersih: tidak ada URL lokal"
+          echo "Clean: no local URLs"
